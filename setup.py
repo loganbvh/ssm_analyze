@@ -54,12 +54,13 @@ KEYWORDS = "scanning SQUID microscopy"
 
 setup(
     name=NAME,
-    version="0.2.0",
+    version="0.2.1",
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     url=URL,
     license=LICENSE,
     packages=find_packages(),
+    package_data={"ssm_analyze": ["gui/img/icon.png"]},
     include_package_data=True,
     entry_points={
         "console_scripts": ["ssm_analyze=ssm_analyze.gui.window:main"],
