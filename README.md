@@ -5,26 +5,35 @@
 ### Requirements
 - [Anaconda 3](https://www.anaconda.com/distribution/#download-section)
 
-### Installing from source
-- [Clone](https://help.github.com/en/articles/cloning-a-repository) or download this repository
-- Create a [conda environment](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands) using the following commands:
+### Installation
 
-  ```
-  conda create --name <env-name> python=<3.6, 3.7, 3.8, or 3.9>
-  conda activate <env-name>
-  ```
+It is recommended to install `ssm_analyze` inside of a dedicated [conda environment](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands). `ssm_analyze` has been tested on Python 3.6, 3.7, 3.8 and 3.9. You can create a [conda environment](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands) using the following commands:
 
+```
+conda create --name <env-name> python=<3.6, 3.7, 3.8, or 3.9>
+conda activate <env-name>
+```
+
+After creating and activating your conda env, you can install `ssm-analyze` in one of two ways:
+
+#### Install via [pip](https://pypi.org/project/ssm-analyze/)
+```
+pip install ssm-analyze
+```
+
+#### Install from source
+- [Clone](https://help.github.com/en/articles/cloning-a-repository) or download [this repository](https://github.com/loganbvh/ssm_analyze)
 - Navigate to this directory and install `ssm_analyze` using `pip`:
   ```
   pip install -e .
   ```
 
-<!-- ### Installing via `pip`
-Coming soon...
-  -->
-
 ### Usage
-- Start the GUI by calling
+- Start the GUI by running either of the below commands from the command line:
+  ```
+  ssm_analyze
+  ```
+  or
   ```
   python -m ssm_analyze.start_gui
   ```
