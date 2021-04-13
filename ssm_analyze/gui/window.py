@@ -23,7 +23,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         self.dataset = None
-        self.setWindowTitle("scanning-squid-analysis")
+        self.setWindowTitle("ssm_analyze")
         self.shell = QJupyterWidget()
         self.station_snap = MetaWidget()
         self.measurement_meta = MetaWidget()
