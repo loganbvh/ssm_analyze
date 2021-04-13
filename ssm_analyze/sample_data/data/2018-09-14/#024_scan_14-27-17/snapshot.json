@@ -1,0 +1,2952 @@
+{
+    "station": {
+        "instruments": {
+            "atto": {
+                "functions": {},
+                "submodules": {},
+                "__class__": "instruments.atto.ANC300",
+                "parameters": {
+                    "timeout": {
+                        "value": 5.0,
+                        "ts": "2018-09-14 14:25:02",
+                        "raw_value": 5.0,
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "atto_timeout",
+                        "name": "timeout",
+                        "unit": "s",
+                        "inter_delay": 0,
+                        "instrument": "instruments.atto.ANC300",
+                        "instrument_name": "atto",
+                        "label": "timeout",
+                        "vals": "<MultiType: Numbers v>=0, Enum: {None}>",
+                        "post_delay": 0
+                    },
+                    "version": {
+                        "value": "attocube ANC300 controller version 1.1.0-1304 2013-10-17 08:16",
+                        "ts": "2018-09-13 08:09:23",
+                        "raw_value": "attocube ANC300 controller version 1.1.0-1304 2013-10-17 08:16",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "atto_version",
+                        "name": "version",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "instruments.atto.ANC300",
+                        "instrument_name": "atto",
+                        "label": "Version",
+                        "post_delay": 0
+                    },
+                    "mode_ax1": {
+                        "value": "gnd",
+                        "ts": "2018-09-13 13:45:30",
+                        "raw_value": "gnd",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "atto_mode_ax1",
+                        "name": "mode_ax1",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "instruments.atto.ANC300",
+                        "instrument_name": "atto",
+                        "label": "x axis mode",
+                        "vals": "<Enum: {'gnd', 'stp-', 'stp+', 'stp', 'inp', 'cap', 'off'}>",
+                        "post_delay": 0
+                    },
+                    "voltage_ax1": {
+                        "value": 60,
+                        "ts": "2018-09-13 08:09:21",
+                        "raw_value": 60,
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "atto_voltage_ax1",
+                        "name": "voltage_ax1",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "instruments.atto.ANC300",
+                        "instrument_name": "atto",
+                        "label": "x axis voltage",
+                        "vals": "<Numbers 0<=v<=60>",
+                        "post_delay": 0
+                    },
+                    "freq_ax1": {
+                        "value": 100.0,
+                        "ts": "2018-09-13 13:45:25",
+                        "raw_value": "frequency = 100 Hz",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "atto_freq_ax1",
+                        "name": "freq_ax1",
+                        "unit": "Hz",
+                        "inter_delay": 0,
+                        "instrument": "instruments.atto.ANC300",
+                        "instrument_name": "atto",
+                        "label": "x axis frequency",
+                        "vals": "<Numbers 1<=v<=10000>",
+                        "post_delay": 0
+                    },
+                    "cap_ax1": {
+                        "value": 267.744904,
+                        "ts": "2018-09-13 08:09:37",
+                        "raw_value": "capacitance = 267.744904 nF",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "atto_cap_ax1",
+                        "name": "cap_ax1",
+                        "unit": "nF",
+                        "inter_delay": 0,
+                        "instrument": "instruments.atto.ANC300",
+                        "instrument_name": "atto",
+                        "label": "x axis capacitance",
+                        "post_delay": 0
+                    },
+                    "mode_ax2": {
+                        "value": "gnd",
+                        "ts": "2018-09-13 14:20:38",
+                        "raw_value": "gnd",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "atto_mode_ax2",
+                        "name": "mode_ax2",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "instruments.atto.ANC300",
+                        "instrument_name": "atto",
+                        "label": "y axis mode",
+                        "vals": "<Enum: {'gnd', 'stp-', 'stp+', 'stp', 'inp', 'cap', 'off'}>",
+                        "post_delay": 0
+                    },
+                    "voltage_ax2": {
+                        "value": 60,
+                        "ts": "2018-09-13 08:09:21",
+                        "raw_value": 60,
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "atto_voltage_ax2",
+                        "name": "voltage_ax2",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "instruments.atto.ANC300",
+                        "instrument_name": "atto",
+                        "label": "y axis voltage",
+                        "vals": "<Numbers 0<=v<=60>",
+                        "post_delay": 0
+                    },
+                    "freq_ax2": {
+                        "value": 100.0,
+                        "ts": "2018-09-13 14:20:37",
+                        "raw_value": "frequency = 100 Hz",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "atto_freq_ax2",
+                        "name": "freq_ax2",
+                        "unit": "Hz",
+                        "inter_delay": 0,
+                        "instrument": "instruments.atto.ANC300",
+                        "instrument_name": "atto",
+                        "label": "y axis frequency",
+                        "vals": "<Numbers 1<=v<=10000>",
+                        "post_delay": 0
+                    },
+                    "cap_ax2": {
+                        "value": 257.944946,
+                        "ts": "2018-09-13 08:09:41",
+                        "raw_value": "capacitance = 257.944946 nF",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "atto_cap_ax2",
+                        "name": "cap_ax2",
+                        "unit": "nF",
+                        "inter_delay": 0,
+                        "instrument": "instruments.atto.ANC300",
+                        "instrument_name": "atto",
+                        "label": "y axis capacitance",
+                        "post_delay": 0
+                    },
+                    "mode_ax3": {
+                        "value": "gnd",
+                        "ts": "2018-09-13 13:39:04",
+                        "raw_value": "gnd",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "atto_mode_ax3",
+                        "name": "mode_ax3",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "instruments.atto.ANC300",
+                        "instrument_name": "atto",
+                        "label": "z axis mode",
+                        "vals": "<Enum: {'gnd', 'stp-', 'stp+', 'stp', 'inp', 'cap', 'off'}>",
+                        "post_delay": 0
+                    },
+                    "voltage_ax3": {
+                        "value": 60,
+                        "ts": "2018-09-13 08:09:21",
+                        "raw_value": 60,
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "atto_voltage_ax3",
+                        "name": "voltage_ax3",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "instruments.atto.ANC300",
+                        "instrument_name": "atto",
+                        "label": "z axis voltage",
+                        "vals": "<Numbers 0<=v<=60>",
+                        "post_delay": 0
+                    },
+                    "freq_ax3": {
+                        "value": 100.0,
+                        "ts": "2018-09-13 13:39:03",
+                        "raw_value": "frequency = 100 Hz",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "atto_freq_ax3",
+                        "name": "freq_ax3",
+                        "unit": "Hz",
+                        "inter_delay": 0,
+                        "instrument": "instruments.atto.ANC300",
+                        "instrument_name": "atto",
+                        "label": "z axis frequency",
+                        "vals": "<Numbers 1<=v<=10000>",
+                        "post_delay": 0
+                    },
+                    "cap_ax3": {
+                        "value": 171.209824,
+                        "ts": "2018-09-13 08:09:46",
+                        "raw_value": "capacitance = 171.209824 nF",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "atto_cap_ax3",
+                        "name": "cap_ax3",
+                        "unit": "nF",
+                        "inter_delay": 0,
+                        "instrument": "instruments.atto.ANC300",
+                        "instrument_name": "atto",
+                        "label": "z axis capacitance",
+                        "post_delay": 0
+                    },
+                    "serialnum": {
+                        "value": "ANC300B-C-1601-3007028",
+                        "ts": "2018-09-13 08:09:22",
+                        "raw_value": "ANC300B-C-1601-3007028",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "atto_serialnum",
+                        "name": "serialnum",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "instruments.atto.ANC300",
+                        "instrument_name": "atto",
+                        "label": "Controller serial number",
+                        "post_delay": 0
+                    },
+                    "serialnum_ax1": {
+                        "value": "ANM150A-M-1609-3011045",
+                        "ts": "2018-09-13 08:09:22",
+                        "raw_value": "ANM150A-M-1609-3011045",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "atto_serialnum_ax1",
+                        "name": "serialnum_ax1",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "instruments.atto.ANC300",
+                        "instrument_name": "atto",
+                        "label": "x axis serial number",
+                        "post_delay": 0
+                    },
+                    "serialnum_ax2": {
+                        "value": "ANM150A-M-1609-3011039",
+                        "ts": "2018-09-13 08:09:22",
+                        "raw_value": "ANM150A-M-1609-3011039",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "atto_serialnum_ax2",
+                        "name": "serialnum_ax2",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "instruments.atto.ANC300",
+                        "instrument_name": "atto",
+                        "label": "y axis serial number",
+                        "post_delay": 0
+                    },
+                    "serialnum_ax3": {
+                        "value": "ANM150A-M-1609-3011030",
+                        "ts": "2018-09-13 08:09:23",
+                        "raw_value": "ANM150A-M-1609-3011030",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "atto_serialnum_ax3",
+                        "name": "serialnum_ax3",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "instruments.atto.ANC300",
+                        "instrument_name": "atto",
+                        "label": "z axis serial number",
+                        "post_delay": 0
+                    }
+                },
+                "name": "atto",
+                "address": "ASRL1::INSTR",
+                "terminator": "\r\n",
+                "timeout": 5.0,
+                "metadata": {
+                    "name": "atto",
+                    "model": "ANC300",
+                    "address": "ASRL1::INSTR",
+                    "timeout": 5,
+                    "terminator": "\r\n",
+                    "stopbits": 1,
+                    "baud_rate": 38400,
+                    "axes": {
+                        "x": 1,
+                        "y": 2,
+                        "z": 3
+                    },
+                    "voltage_limits": {
+                        "RT": {
+                            "x": "25 V",
+                            "y": "25 V",
+                            "z": "40 V"
+                        },
+                        "LT": {
+                            "x": "60 V",
+                            "y": "60 V",
+                            "z": "60 V"
+                        }
+                    },
+                    "default_frequency": {
+                        "x": "100 Hz",
+                        "y": "100 Hz",
+                        "z": "100 Hz"
+                    },
+                    "constants": {
+                        "x": "-0.66 um",
+                        "y": "-0.55 um",
+                        "z": "0.2 um",
+                        "comment": "Approximate um/step at 3 K, 60 V. Sign is relative to scanner sign. 2018/02/22"
+                    },
+                    "history": {
+                        "2018-09-13_13:14:08": "Moved -200 steps along y axis.",
+                        "2018-09-13_13:33:48": "Moved 400 steps along x axis.",
+                        "2018-09-13_13:39:04": "Moved 30 steps along z axis.",
+                        "2018-09-13_13:45:30": "Moved -400 steps along x axis.",
+                        "2018-09-13_13:45:40": "Moved 400 steps along y axis.",
+                        "2018-09-13_14:20:38": "Moved -100 steps along y axis."
+                    }
+                }
+            },
+            "ls372": {
+                "functions": {},
+                "submodules": {
+                    "ch1": {
+                        "functions": {},
+                        "submodules": {},
+                        "__class__": "instruments.lakeshore.SensorChannel372",
+                        "parameters": {
+                            "temperature": {
+                                "value": 45.121,
+                                "ts": "2018-09-14 12:40:24",
+                                "raw_value": "+45.1210E+00",
+                                "__class__": "qcodes.instrument.parameter.Parameter",
+                                "full_name": "ls372_Chanch1_temperature",
+                                "name": "temperature",
+                                "unit": "K",
+                                "inter_delay": 0,
+                                "instrument": "instruments.lakeshore.SensorChannel372",
+                                "instrument_name": "ls372_Chanch1",
+                                "label": "Temerature",
+                                "post_delay": 0
+                            },
+                            "sensor_raw": {
+                                "value": 7.3073,
+                                "ts": "2018-09-14 12:40:24",
+                                "raw_value": "+07.3073E+00",
+                                "__class__": "qcodes.instrument.parameter.Parameter",
+                                "full_name": "ls372_Chanch1_sensor_raw",
+                                "name": "sensor_raw",
+                                "unit": "Ohms",
+                                "inter_delay": 0,
+                                "instrument": "instruments.lakeshore.SensorChannel372",
+                                "instrument_name": "ls372_Chanch1",
+                                "label": "Raw_Reading",
+                                "post_delay": 0
+                            },
+                            "sensor_status": {
+                                "value": "OK",
+                                "ts": "2018-09-14 12:40:24",
+                                "raw_value": "000",
+                                "__class__": "qcodes.instrument.parameter.Parameter",
+                                "full_name": "ls372_Chanch1_sensor_status",
+                                "name": "sensor_status",
+                                "val_mapping": {
+                                    "OK": 0,
+                                    "CS Overload": 1,
+                                    "VCM Overload": 2,
+                                    "VMIX Overload": 4,
+                                    "VDIF Overload": 8,
+                                    "Resisance Overrange": 16,
+                                    "Resistance Underrange": 32,
+                                    "Temp Overrange": 64,
+                                    "Temp Underrange": 128
+                                },
+                                "unit": "",
+                                "inter_delay": 0,
+                                "instrument": "instruments.lakeshore.SensorChannel372",
+                                "instrument_name": "ls372_Chanch1",
+                                "label": "Sensor_Status",
+                                "vals": "<Enum: {'Temp Underrange', 'VMIX Overload', 'VDIF Overload', 'OK', 'Resistance Underrange', 'CS Overload', 'VCM Overload', 'Temp Overrange', 'Resisance Overrange'}>",
+                                "post_delay": 0
+                            },
+                            "sensor_name": {
+                                "value": "50K Plate",
+                                "ts": "2018-09-14 12:40:24",
+                                "raw_value": "50K Plate      ",
+                                "__class__": "qcodes.instrument.parameter.Parameter",
+                                "full_name": "ls372_Chanch1_sensor_name",
+                                "name": "sensor_name",
+                                "unit": "",
+                                "inter_delay": 0,
+                                "instrument": "instruments.lakeshore.SensorChannel372",
+                                "instrument_name": "ls372_Chanch1",
+                                "label": "Sensor_Name",
+                                "vals": "<Strings>",
+                                "post_delay": 0
+                            }
+                        },
+                        "name": "ls372_Chanch1"
+                    },
+                    "ch2": {
+                        "functions": {},
+                        "submodules": {},
+                        "__class__": "instruments.lakeshore.SensorChannel372",
+                        "parameters": {
+                            "temperature": {
+                                "value": 2.92634,
+                                "ts": "2018-09-14 12:40:24",
+                                "raw_value": "+2.92634E+00",
+                                "__class__": "qcodes.instrument.parameter.Parameter",
+                                "full_name": "ls372_Chanch2_temperature",
+                                "name": "temperature",
+                                "unit": "K",
+                                "inter_delay": 0,
+                                "instrument": "instruments.lakeshore.SensorChannel372",
+                                "instrument_name": "ls372_Chanch2",
+                                "label": "Temerature",
+                                "post_delay": 0
+                            },
+                            "sensor_raw": {
+                                "value": 270.438,
+                                "ts": "2018-09-14 12:40:24",
+                                "raw_value": "+270.438E+00",
+                                "__class__": "qcodes.instrument.parameter.Parameter",
+                                "full_name": "ls372_Chanch2_sensor_raw",
+                                "name": "sensor_raw",
+                                "unit": "Ohms",
+                                "inter_delay": 0,
+                                "instrument": "instruments.lakeshore.SensorChannel372",
+                                "instrument_name": "ls372_Chanch2",
+                                "label": "Raw_Reading",
+                                "post_delay": 0
+                            },
+                            "sensor_status": {
+                                "value": "OK",
+                                "ts": "2018-09-14 12:40:24",
+                                "raw_value": "000",
+                                "__class__": "qcodes.instrument.parameter.Parameter",
+                                "full_name": "ls372_Chanch2_sensor_status",
+                                "name": "sensor_status",
+                                "val_mapping": {
+                                    "OK": 0,
+                                    "CS Overload": 1,
+                                    "VCM Overload": 2,
+                                    "VMIX Overload": 4,
+                                    "VDIF Overload": 8,
+                                    "Resisance Overrange": 16,
+                                    "Resistance Underrange": 32,
+                                    "Temp Overrange": 64,
+                                    "Temp Underrange": 128
+                                },
+                                "unit": "",
+                                "inter_delay": 0,
+                                "instrument": "instruments.lakeshore.SensorChannel372",
+                                "instrument_name": "ls372_Chanch2",
+                                "label": "Sensor_Status",
+                                "vals": "<Enum: {'Temp Underrange', 'VMIX Overload', 'VDIF Overload', 'OK', 'Resistance Underrange', 'CS Overload', 'VCM Overload', 'Temp Overrange', 'Resisance Overrange'}>",
+                                "post_delay": 0
+                            },
+                            "sensor_name": {
+                                "value": "3K Plate",
+                                "ts": "2018-09-14 12:40:24",
+                                "raw_value": "3K Plate       ",
+                                "__class__": "qcodes.instrument.parameter.Parameter",
+                                "full_name": "ls372_Chanch2_sensor_name",
+                                "name": "sensor_name",
+                                "unit": "",
+                                "inter_delay": 0,
+                                "instrument": "instruments.lakeshore.SensorChannel372",
+                                "instrument_name": "ls372_Chanch2",
+                                "label": "Sensor_Name",
+                                "vals": "<Strings>",
+                                "post_delay": 0
+                            }
+                        },
+                        "name": "ls372_Chanch2"
+                    },
+                    "channels": {
+                        "snapshotable": false,
+                        "__class__": "qcodes.instrument.channel.ChannelList"
+                    }
+                },
+                "__class__": "instruments.lakeshore.Model_372",
+                "parameters": {
+                    "IDN": {
+                        "value": {
+                            "vendor": "LSCI",
+                            "model": "372",
+                            "serial": "LSA17DZ",
+                            "firmware": "1.3"
+                        },
+                        "ts": "2018-09-14 12:40:24",
+                        "raw_value": {
+                            "vendor": "LSCI",
+                            "model": "372",
+                            "serial": "LSA17DZ",
+                            "firmware": "1.3"
+                        },
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "ls372_IDN",
+                        "name": "IDN",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "instruments.lakeshore.Model_372",
+                        "instrument_name": "ls372",
+                        "label": "IDN",
+                        "vals": "<Anything>",
+                        "post_delay": 0
+                    },
+                    "timeout": {
+                        "value": 5.0,
+                        "ts": "2018-09-14 14:25:02",
+                        "raw_value": 5.0,
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "ls372_timeout",
+                        "name": "timeout",
+                        "unit": "s",
+                        "inter_delay": 0,
+                        "instrument": "instruments.lakeshore.Model_372",
+                        "instrument_name": "ls372",
+                        "label": "timeout",
+                        "vals": "<MultiType: Numbers v>=0, Enum: {None}>",
+                        "post_delay": 0
+                    }
+                },
+                "name": "ls372",
+                "address": "GPIB0::13::7::INSTR",
+                "terminator": "\r\n",
+                "timeout": 5.0
+            },
+            "ls331": {
+                "functions": {},
+                "submodules": {
+                    "A": {
+                        "functions": {},
+                        "submodules": {},
+                        "__class__": "instruments.lakeshore.SensorChannel33x",
+                        "parameters": {
+                            "temperature": {
+                                "value": 60.196,
+                                "ts": "2018-09-14 12:40:24",
+                                "raw_value": "+60.196",
+                                "__class__": "qcodes.instrument.parameter.Parameter",
+                                "full_name": "ls331_ChanA_temperature",
+                                "name": "temperature",
+                                "unit": "K",
+                                "inter_delay": 0,
+                                "instrument": "instruments.lakeshore.SensorChannel33x",
+                                "instrument_name": "ls331_ChanA",
+                                "label": "Temerature",
+                                "post_delay": 0
+                            },
+                            "sensor_raw": {
+                                "value": 1.0567,
+                                "ts": "2018-09-14 12:40:24",
+                                "raw_value": "+1.0567",
+                                "__class__": "qcodes.instrument.parameter.Parameter",
+                                "full_name": "ls331_ChanA_sensor_raw",
+                                "name": "sensor_raw",
+                                "unit": "V",
+                                "inter_delay": 0,
+                                "instrument": "instruments.lakeshore.SensorChannel33x",
+                                "instrument_name": "ls331_ChanA",
+                                "label": "Raw_Reading",
+                                "post_delay": 0
+                            },
+                            "sensor_status": {
+                                "value": "OK",
+                                "ts": "2018-09-14 12:40:24",
+                                "raw_value": "000",
+                                "__class__": "qcodes.instrument.parameter.Parameter",
+                                "full_name": "ls331_ChanA_sensor_status",
+                                "name": "sensor_status",
+                                "val_mapping": {
+                                    "OK": 0,
+                                    "Invalid Reading": 1,
+                                    "Temp Underrange": 16,
+                                    "Temp Overrange": 32,
+                                    "Sensor Units Zero": 64,
+                                    "Sensor Units Overrange": 128
+                                },
+                                "unit": "",
+                                "inter_delay": 0,
+                                "instrument": "instruments.lakeshore.SensorChannel33x",
+                                "instrument_name": "ls331_ChanA",
+                                "label": "Sensor_Status",
+                                "vals": "<Enum: {'OK', 'Sensor Units Overrange', 'Invalid Reading', 'Temp Overrange', 'Sensor Units Zero', 'Temp Underrange'}>",
+                                "post_delay": 0
+                            },
+                            "sensor_name": {
+                                "value": "LSCI,MODEL331S,331514,032301",
+                                "ts": "2018-09-14 12:40:24",
+                                "raw_value": "LSCI,MODEL331S,331514,032301",
+                                "__class__": "qcodes.instrument.parameter.Parameter",
+                                "full_name": "ls331_ChanA_sensor_name",
+                                "name": "sensor_name",
+                                "unit": "",
+                                "inter_delay": 0,
+                                "instrument": "instruments.lakeshore.SensorChannel33x",
+                                "instrument_name": "ls331_ChanA",
+                                "label": "Sensor_Name",
+                                "vals": "<Strings>",
+                                "post_delay": 0
+                            }
+                        },
+                        "name": "ls331_ChanA"
+                    },
+                    "channels": {
+                        "snapshotable": false,
+                        "__class__": "qcodes.instrument.channel.ChannelList"
+                    }
+                },
+                "__class__": "instruments.lakeshore.Model_331",
+                "parameters": {
+                    "IDN": {
+                        "value": {
+                            "vendor": "LSCI",
+                            "model": "331S",
+                            "serial": "331514",
+                            "firmware": "032301"
+                        },
+                        "ts": "2018-09-14 12:40:24",
+                        "raw_value": {
+                            "vendor": "LSCI",
+                            "model": "331S",
+                            "serial": "331514",
+                            "firmware": "032301"
+                        },
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "ls331_IDN",
+                        "name": "IDN",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "instruments.lakeshore.Model_331",
+                        "instrument_name": "ls331",
+                        "label": "IDN",
+                        "vals": "<Anything>",
+                        "post_delay": 0
+                    },
+                    "timeout": {
+                        "value": 5.0,
+                        "ts": "2018-09-14 14:25:02",
+                        "raw_value": 5.0,
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "ls331_timeout",
+                        "name": "timeout",
+                        "unit": "s",
+                        "inter_delay": 0,
+                        "instrument": "instruments.lakeshore.Model_331",
+                        "instrument_name": "ls331",
+                        "label": "timeout",
+                        "vals": "<MultiType: Numbers v>=0, Enum: {None}>",
+                        "post_delay": 0
+                    },
+                    "set_temperature": {
+                        "value": 60.0,
+                        "ts": "2018-09-14 12:40:24",
+                        "raw_value": "+60.000",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "ls331_set_temperature",
+                        "name": "set_temperature",
+                        "unit": "K",
+                        "inter_delay": 0,
+                        "instrument": "instruments.lakeshore.Model_331",
+                        "instrument_name": "ls331",
+                        "label": "Set Temerature",
+                        "vals": "<Numbers 3<=v<=300>",
+                        "post_delay": 0
+                    },
+                    "heater_range": {
+                        "value": 1,
+                        "ts": "2018-09-14 12:40:24",
+                        "raw_value": "1",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "ls331_heater_range",
+                        "name": "heater_range",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "instruments.lakeshore.Model_331",
+                        "instrument_name": "ls331",
+                        "label": "Heater range",
+                        "vals": "<Enum: {0, 1, 2, 3}>",
+                        "post_delay": 0
+                    },
+                    "ramp_rate": {
+                        "value": "1,+010.0",
+                        "ts": "2018-09-14 12:40:24",
+                        "raw_value": "1,+010.0",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "ls331_ramp_rate",
+                        "name": "ramp_rate",
+                        "unit": "K/min",
+                        "inter_delay": 0,
+                        "instrument": "instruments.lakeshore.Model_331",
+                        "instrument_name": "ls331",
+                        "label": "Heater range",
+                        "vals": "<Numbers 0<=v<=100>",
+                        "post_delay": 0
+                    }
+                },
+                "name": "ls331",
+                "address": "GPIB0::30::7::INSTR",
+                "terminator": "\r\n",
+                "timeout": 5.0
+            },
+            "benders": {
+                "functions": {},
+                "submodules": {},
+                "__class__": "scanner.Scanner",
+                "parameters": {
+                    "IDN": {
+                        "value": {
+                            "vendor": null,
+                            "model": "benders",
+                            "serial": null,
+                            "firmware": null
+                        },
+                        "ts": "2018-09-14 12:40:24",
+                        "raw_value": {
+                            "vendor": null,
+                            "model": "benders",
+                            "serial": null,
+                            "firmware": null
+                        },
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "benders_IDN",
+                        "name": "IDN",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "scanner.Scanner",
+                        "instrument_name": "benders",
+                        "label": "IDN",
+                        "vals": "<Anything>",
+                        "post_delay": 0
+                    },
+                    "position": {
+                        "value": [
+                            1.7,
+                            -2.799,
+                            0.988
+                        ],
+                        "ts": "2018-09-14 14:27:15",
+                        "raw_value": [
+                            1.7,
+                            -2.799,
+                            0.988
+                        ],
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "benders_position",
+                        "name": "position",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "scanner.Scanner",
+                        "instrument_name": "benders",
+                        "label": "Scanner position",
+                        "vals": "<Lists : <Numbers -10<=v<=10>>",
+                        "post_delay": 0
+                    },
+                    "position_x": {
+                        "value": 0.002,
+                        "ts": "2018-09-14 12:40:24",
+                        "raw_value": 0.002,
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "benders_position_x",
+                        "name": "position_x",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "scanner.Scanner",
+                        "instrument_name": "benders",
+                        "label": "x position",
+                        "vals": "<Numbers -10<=v<=10>",
+                        "post_delay": 0
+                    },
+                    "position_y": {
+                        "value": -2.245454545454545,
+                        "ts": "2018-09-14 14:26:47",
+                        "raw_value": -2.245454545454545,
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "benders_position_y",
+                        "name": "position_y",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "scanner.Scanner",
+                        "instrument_name": "benders",
+                        "label": "y position",
+                        "vals": "<Numbers -10<=v<=10>",
+                        "post_delay": 0
+                    },
+                    "position_z": {
+                        "value": 0.9000000000000004,
+                        "ts": "2018-09-14 12:41:34",
+                        "raw_value": 0.9000000000000004,
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "benders_position_z",
+                        "name": "position_z",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "scanner.Scanner",
+                        "instrument_name": "benders",
+                        "label": "z position",
+                        "vals": "<Numbers -10<=v<=10>",
+                        "post_delay": 0
+                    }
+                },
+                "name": "benders",
+                "metadata": {
+                    "name": "benders",
+                    "constants": {
+                        "x": "17 um/V",
+                        "y": "18 um/V",
+                        "z": "2 um/V",
+                        "comment": "um/V_daq (2018/02)"
+                    },
+                    "voltage_limits": {
+                        "RT": {
+                            "x": [
+                                -2,
+                                2
+                            ],
+                            "y": [
+                                -2,
+                                2
+                            ],
+                            "z": [
+                                -2,
+                                2
+                            ]
+                        },
+                        "LT": {
+                            "x": [
+                                -10,
+                                10
+                            ],
+                            "y": [
+                                -10,
+                                10
+                            ],
+                            "z": [
+                                -10,
+                                10
+                            ]
+                        },
+                        "unit": "V",
+                        "comment": "V_daq should never be outside of voltage_limits."
+                    },
+                    "voltage_retract": {
+                        "RT": "-2 V",
+                        "LT": "-10 V"
+                    },
+                    "speed": {
+                        "value": "2 V/s",
+                        "comment": "Rate of movement of the scanner (when not scanning)."
+                    },
+                    "plane": {
+                        "x": -0.06961506953554483,
+                        "y": -0.2750963101664191,
+                        "z": 0.3356
+                    },
+                    "cantilever": {
+                        "calibration": "326 uV/pF",
+                        "comment": "CAP lockin X reading, freq = 6.821 kHz, amp = 1 V"
+                    },
+                    "daq": {
+                        "model": "NI USB-6363",
+                        "name": "Dev1",
+                        "channels": {
+                            "analog_inputs": {
+                                "MAG": 0,
+                                "SUSCX": 1,
+                                "SUSCY": 2,
+                                "CAP": 3,
+                                "x": 4,
+                                "y": 5,
+                                "z": 6
+                            },
+                            "analog_outputs": {
+                                "x": 0,
+                                "y": 1,
+                                "z": 2
+                            }
+                        },
+                        "rate": "100 kHz",
+                        "max_rate": {
+                            "analog_inputs": {
+                                "1 channel": "2 MHz",
+                                "multichannel": "1 MHz",
+                                "comment": "Multichannel value is aggregate for all ai channels."
+                            },
+                            "analog_outputs": {
+                                "1 channels": "2.86 MHz",
+                                "2 channels": "2.00 MHz",
+                                "3 channels": "1.54 MHz",
+                                "4 channels": "1.25 MHz",
+                                "comment": "Max ao rates are per channel."
+                            }
+                        }
+                    },
+                    "td_grid": {
+                        "x": [
+                            [
+                                -5.0,
+                                -5.0,
+                                -5.0
+                            ],
+                            [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            [
+                                5.0,
+                                5.0,
+                                5.0
+                            ]
+                        ],
+                        "y": [
+                            [
+                                -5.0,
+                                0.0,
+                                5.0
+                            ],
+                            [
+                                -5.0,
+                                0.0,
+                                5.0
+                            ],
+                            [
+                                -5.0,
+                                0.0,
+                                5.0
+                            ]
+                        ],
+                        "z": [
+                            [
+                                2.9533989418686564,
+                                1.5926407329113932,
+                                0.18274189879055147
+                            ],
+                            [
+                                2.6395111071959008,
+                                1.324239678639797,
+                                -0.14276558301518547
+                            ],
+                            [
+                                2.2282837282599166,
+                                0.8837176026878052,
+                                -0.4716718434434638
+                            ]
+                        ]
+                    }
+                }
+            },
+            "SQUID": {
+                "functions": {},
+                "submodules": {},
+                "__class__": "squids.Susceptometer",
+                "parameters": {
+                    "IDN": {
+                        "value": {
+                            "vendor": null,
+                            "model": "SQUID",
+                            "serial": null,
+                            "firmware": null
+                        },
+                        "ts": "2018-09-14 12:40:24",
+                        "raw_value": {
+                            "vendor": null,
+                            "model": "SQUID",
+                            "serial": null,
+                            "firmware": null
+                        },
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SQUID_IDN",
+                        "name": "IDN",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "squids.Susceptometer",
+                        "instrument_name": "SQUID",
+                        "label": "IDN",
+                        "vals": "<Anything>",
+                        "post_delay": 0
+                    }
+                },
+                "name": "SQUID",
+                "metadata": {
+                    "name": "SQUID",
+                    "type": "susceptometer",
+                    "description": "IBM deep-etched 0.3um susceptometer",
+                    "modulation_width": "1.04 V/Phi0",
+                    "FC_PU_mutual": "145 Phi0/A",
+                    "feedback": {
+                        "type": "Red Pitaya + pyrpl"
+                    },
+                    "dimensions": {
+                        "PU_ri": "0.3 um",
+                        "PU_ro": "0.5 um",
+                        "FC_ri": "1.0 um",
+                        "FC_ro": "1.5 um"
+                    }
+                }
+            },
+            "SUSC_lockin": {
+                "functions": {
+                    "auto_gain": {},
+                    "auto_reserve": {},
+                    "auto_phase": {},
+                    "auto_offset": {},
+                    "reset": {},
+                    "disable_front_panel": {},
+                    "enable_front_panel": {},
+                    "send_trigger": {},
+                    "buffer_start": {},
+                    "buffer_pause": {},
+                    "buffer_reset": {}
+                },
+                "submodules": {},
+                "__class__": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                "parameters": {
+                    "IDN": {
+                        "value": {
+                            "vendor": "Stanford_Research_Systems",
+                            "model": "SR830",
+                            "serial": "s/n53956",
+                            "firmware": "ver1.07"
+                        },
+                        "ts": "2018-09-14 14:27:16",
+                        "raw_value": {
+                            "vendor": "Stanford_Research_Systems",
+                            "model": "SR830",
+                            "serial": "s/n53956",
+                            "firmware": "ver1.07"
+                        },
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_IDN",
+                        "name": "IDN",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "IDN",
+                        "vals": "<Anything>",
+                        "post_delay": 0
+                    },
+                    "timeout": {
+                        "value": 5.0,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": 5.0,
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_timeout",
+                        "name": "timeout",
+                        "unit": "s",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "timeout",
+                        "vals": "<MultiType: Numbers v>=0, Enum: {None}>",
+                        "post_delay": 0
+                    },
+                    "phase": {
+                        "value": 0.0,
+                        "ts": "2018-09-14 14:27:16",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_phase",
+                        "name": "phase",
+                        "unit": "deg",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Phase",
+                        "vals": "<Numbers -360<=v<=729.99>",
+                        "post_delay": 0
+                    },
+                    "reference_source": {
+                        "value": "internal",
+                        "ts": "2018-09-14 14:27:16",
+                        "raw_value": "1\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_reference_source",
+                        "name": "reference_source",
+                        "val_mapping": {
+                            "external": 0,
+                            "internal": 1
+                        },
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Reference source",
+                        "vals": "<Enum: {'internal', 'external'}>",
+                        "post_delay": 0
+                    },
+                    "frequency": {
+                        "value": 280.0,
+                        "ts": "2018-09-14 14:27:16",
+                        "raw_value": "280\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_frequency",
+                        "name": "frequency",
+                        "unit": "Hz",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Frequency",
+                        "vals": "<Numbers 0.001<=v<=102000.0>",
+                        "post_delay": 0
+                    },
+                    "ext_trigger": {
+                        "value": "TTL rising",
+                        "ts": "2018-09-14 14:27:16",
+                        "raw_value": "1\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_ext_trigger",
+                        "name": "ext_trigger",
+                        "val_mapping": {
+                            "sine": 0,
+                            "TTL rising": 1,
+                            "TTL falling": 2
+                        },
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "External trigger",
+                        "vals": "<Enum: {'TTL rising', 'TTL falling', 'sine'}>",
+                        "post_delay": 0
+                    },
+                    "harmonic": {
+                        "value": 1,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "1\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_harmonic",
+                        "name": "harmonic",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Harmonic",
+                        "vals": "<Ints 1<=v<=19999>",
+                        "post_delay": 0
+                    },
+                    "amplitude": {
+                        "value": 2.0,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "2\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_amplitude",
+                        "name": "amplitude",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Amplitude",
+                        "vals": "<Numbers 0.004<=v<=5.0>",
+                        "post_delay": 0
+                    },
+                    "input_config": {
+                        "value": "a",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_input_config",
+                        "name": "input_config",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Input configuration",
+                        "vals": "<Enum: {'I 1M', 'I 100M', 'a', 'a-b'}>",
+                        "post_delay": 0
+                    },
+                    "input_shield": {
+                        "value": "float",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_input_shield",
+                        "name": "input_shield",
+                        "val_mapping": {
+                            "float": 0,
+                            "ground": 1
+                        },
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Input shield",
+                        "vals": "<Enum: {'ground', 'float'}>",
+                        "post_delay": 0
+                    },
+                    "input_coupling": {
+                        "value": "AC",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_input_coupling",
+                        "name": "input_coupling",
+                        "val_mapping": {
+                            "AC": 0,
+                            "DC": 1
+                        },
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Input coupling",
+                        "vals": "<Enum: {'AC', 'DC'}>",
+                        "post_delay": 0
+                    },
+                    "notch_filter": {
+                        "value": "off",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_notch_filter",
+                        "name": "notch_filter",
+                        "val_mapping": {
+                            "off": 0,
+                            "line in": 1,
+                            "2x line in": 2,
+                            "both": 3
+                        },
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Notch filter",
+                        "vals": "<Enum: {'both', '2x line in', 'line in', 'off'}>",
+                        "post_delay": 0
+                    },
+                    "sensitivity": {
+                        "value": 0.5,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "25\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_sensitivity",
+                        "name": "sensitivity",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Sensitivity",
+                        "vals": "<Enum: {0.2, 0.5, 2e-09, 1, 1e-08, 5e-05, 2e-08, 0.0001, 0.05, 0.0002, 5e-06, 5e-08, 1e-06, 0.1, 5e-09, 2e-05, 0.02, 5e-07, 1e-05, 0.01, 2e-07, 0.005, 1e-07, 2e-06, 0.002, 0.001, 0.0005}>",
+                        "post_delay": 0
+                    },
+                    "reserve": {
+                        "value": "normal",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "1\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_reserve",
+                        "name": "reserve",
+                        "val_mapping": {
+                            "high": 0,
+                            "normal": 1,
+                            "low noise": 2
+                        },
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Reserve",
+                        "vals": "<Enum: {'low noise', 'normal', 'high'}>",
+                        "post_delay": 0
+                    },
+                    "time_constant": {
+                        "value": 0.03,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "7\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_time_constant",
+                        "name": "time_constant",
+                        "val_mapping": {
+                            "1e-05": 0,
+                            "3e-05": 1,
+                            "0.0001": 2,
+                            "0.0003": 3,
+                            "0.001": 4,
+                            "0.003": 5,
+                            "0.01": 6,
+                            "0.03": 7,
+                            "0.1": 8,
+                            "0.3": 9,
+                            "1": 10,
+                            "3": 11,
+                            "10": 12,
+                            "30": 13,
+                            "100": 14,
+                            "300": 15,
+                            "1000.0": 16,
+                            "3000.0": 17,
+                            "10000.0": 18,
+                            "30000.0": 19,
+                            "1e-05": 0,
+                            "3e-05": 1,
+                            "0.0001": 2,
+                            "0.0003": 3,
+                            "0.001": 4,
+                            "0.003": 5,
+                            "0.01": 6,
+                            "0.03": 7,
+                            "0.1": 8,
+                            "0.3": 9,
+                            "1": 10,
+                            "3": 11,
+                            "10": 12,
+                            "30": 13,
+                            "100": 14,
+                            "300": 15,
+                            "1000.0": 16,
+                            "3000.0": 17,
+                            "10000.0": 18,
+                            "30000.0": 19
+                        },
+                        "unit": "s",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Time constant",
+                        "vals": "<Enum: {0.03, 0.1, 0.003, 0.3, 1, 3, 100, 1e-05, 1000.0, 10, 0.0003, 0.01, 300, 10000.0, 30000.0, 30, 3000.0, 0.0001, 3e-05, 0.001}>",
+                        "post_delay": 0
+                    },
+                    "filter_slope": {
+                        "value": 24,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "3\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_filter_slope",
+                        "name": "filter_slope",
+                        "val_mapping": {
+                            "6": 0,
+                            "12": 1,
+                            "18": 2,
+                            "24": 3,
+                            "6": 0,
+                            "12": 1,
+                            "18": 2,
+                            "24": 3
+                        },
+                        "unit": "dB/oct",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Filter slope",
+                        "vals": "<Enum: {24, 18, 12, 6}>",
+                        "post_delay": 0
+                    },
+                    "sync_filter": {
+                        "value": "off",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_sync_filter",
+                        "name": "sync_filter",
+                        "val_mapping": {
+                            "off": 0,
+                            "on": 1
+                        },
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Sync filter",
+                        "vals": "<Enum: {'on', 'off'}>",
+                        "post_delay": 0
+                    },
+                    "X_offset": {
+                        "value": [
+                            0.0,
+                            0
+                        ],
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0,0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_X_offset",
+                        "name": "X_offset",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "X_offset",
+                        "post_delay": 0
+                    },
+                    "Y_offset": {
+                        "value": [
+                            0.0,
+                            0
+                        ],
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0,0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_Y_offset",
+                        "name": "Y_offset",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Y_offset",
+                        "post_delay": 0
+                    },
+                    "R_offset": {
+                        "value": [
+                            0.0,
+                            0
+                        ],
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0,0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_R_offset",
+                        "name": "R_offset",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "R_offset",
+                        "post_delay": 0
+                    },
+                    "aux_in1": {
+                        "value": 0.001,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0.001\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_aux_in1",
+                        "name": "aux_in1",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Aux input 1",
+                        "post_delay": 0
+                    },
+                    "aux_out1": {
+                        "value": -0.423,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "-0.423\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_aux_out1",
+                        "name": "aux_out1",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Aux output 1",
+                        "post_delay": 0
+                    },
+                    "aux_in2": {
+                        "value": -0.00366667,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "-0.00366667\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_aux_in2",
+                        "name": "aux_in2",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Aux input 2",
+                        "post_delay": 0
+                    },
+                    "aux_out2": {
+                        "value": 0.107,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0.107\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_aux_out2",
+                        "name": "aux_out2",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Aux output 2",
+                        "post_delay": 0
+                    },
+                    "aux_in3": {
+                        "value": -0.007,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "-0.007\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_aux_in3",
+                        "name": "aux_in3",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Aux input 3",
+                        "post_delay": 0
+                    },
+                    "aux_out3": {
+                        "value": 0.0,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_aux_out3",
+                        "name": "aux_out3",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Aux output 3",
+                        "post_delay": 0
+                    },
+                    "aux_in4": {
+                        "value": -0.00166667,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "-0.00166667\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_aux_in4",
+                        "name": "aux_in4",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Aux input 4",
+                        "post_delay": 0
+                    },
+                    "aux_out4": {
+                        "value": 0.0,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_aux_out4",
+                        "name": "aux_out4",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Aux output 4",
+                        "post_delay": 0
+                    },
+                    "output_interface": {
+                        "value": "GPIB",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "1\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_output_interface",
+                        "name": "output_interface",
+                        "val_mapping": {
+                            "RS232": "0\n",
+                            "GPIB": "1\n"
+                        },
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Output interface",
+                        "vals": "<Enum: {'GPIB', 'RS232'}>",
+                        "post_delay": 0
+                    },
+                    "ch1_ratio": {
+                        "value": "none",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "none",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_ch1_ratio",
+                        "name": "ch1_ratio",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Channel 1 ratio",
+                        "vals": "<Strings>",
+                        "post_delay": 0
+                    },
+                    "ch1_display": {
+                        "value": "X",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "X",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_ch1_display",
+                        "name": "ch1_display",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Channel 1 display",
+                        "vals": "<Strings>",
+                        "post_delay": 0
+                    },
+                    "ch1_databuffer": {
+                        "ts": null,
+                        "__class__": "qcodes.instrument_drivers.stanford_research.SR830.ChannelBuffer",
+                        "full_name": "SUSC_lockin_ch1_databuffer",
+                        "setpoint_labels": [
+                            "Time"
+                        ],
+                        "name": "ch1_databuffer",
+                        "setpoint_names": [
+                            "Time"
+                        ],
+                        "setpoint_units": [
+                            "s"
+                        ],
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "ch1_databuffer",
+                        "post_delay": 0
+                    },
+                    "ch2_ratio": {
+                        "value": "none",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "none",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_ch2_ratio",
+                        "name": "ch2_ratio",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Channel 2 ratio",
+                        "vals": "<Strings>",
+                        "post_delay": 0
+                    },
+                    "ch2_display": {
+                        "value": "Y",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "Y",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_ch2_display",
+                        "name": "ch2_display",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Channel 2 display",
+                        "vals": "<Strings>",
+                        "post_delay": 0
+                    },
+                    "ch2_databuffer": {
+                        "ts": null,
+                        "__class__": "qcodes.instrument_drivers.stanford_research.SR830.ChannelBuffer",
+                        "full_name": "SUSC_lockin_ch2_databuffer",
+                        "setpoint_labels": [
+                            "Time"
+                        ],
+                        "name": "ch2_databuffer",
+                        "setpoint_names": [
+                            "Time"
+                        ],
+                        "setpoint_units": [
+                            "s"
+                        ],
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "ch2_databuffer",
+                        "post_delay": 0
+                    },
+                    "X": {
+                        "value": -0.0673528,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "-0.0673528\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_X",
+                        "name": "X",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "X",
+                        "post_delay": 0
+                    },
+                    "Y": {
+                        "value": 0.00192261,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0.00192261\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_Y",
+                        "name": "Y",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Y",
+                        "post_delay": 0
+                    },
+                    "R": {
+                        "value": 0.0673528,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0.0673528\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_R",
+                        "name": "R",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "R",
+                        "post_delay": 0
+                    },
+                    "P": {
+                        "value": 178.344,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "178.344\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_P",
+                        "name": "P",
+                        "unit": "deg",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "P",
+                        "post_delay": 0
+                    },
+                    "buffer_SR": {
+                        "value": 1,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "4\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_buffer_SR",
+                        "name": "buffer_SR",
+                        "val_mapping": {
+                            "0.0625": 0,
+                            "0.125": 1,
+                            "0.25": 2,
+                            "0.5": 3,
+                            "1": 4,
+                            "2": 5,
+                            "4": 6,
+                            "8": 7,
+                            "16": 8,
+                            "32": 9,
+                            "64": 10,
+                            "128": 11,
+                            "256": 12,
+                            "512": 13,
+                            "Trigger": 14,
+                            "0.0625": 0,
+                            "0.125": 1,
+                            "0.25": 2,
+                            "0.5": 3,
+                            "1": 4,
+                            "2": 5,
+                            "4": 6,
+                            "8": 7,
+                            "16": 8,
+                            "32": 9,
+                            "64": 10,
+                            "128": 11,
+                            "256": 12,
+                            "512": 13
+                        },
+                        "unit": "Hz",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Buffer sample rate",
+                        "vals": "<Enum: {0.0625, 0.125, 1, 0.25, 0.5, 2, 4, 32, 8, 64, 128, 256, 16, 512, 'Trigger'}>",
+                        "post_delay": 0
+                    },
+                    "buffer_acq_mode": {
+                        "value": "single shot",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_buffer_acq_mode",
+                        "name": "buffer_acq_mode",
+                        "val_mapping": {
+                            "single shot": 0,
+                            "loop": 1
+                        },
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Buffer acquistion mode",
+                        "vals": "<Enum: {'single shot', 'loop'}>",
+                        "post_delay": 0
+                    },
+                    "buffer_trig_mode": {
+                        "value": "OFF",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_buffer_trig_mode",
+                        "name": "buffer_trig_mode",
+                        "val_mapping": {
+                            "ON": 1,
+                            "OFF": 0
+                        },
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Buffer trigger start mode",
+                        "vals": "<Enum: {'ON', 'OFF'}>",
+                        "post_delay": 0
+                    },
+                    "buffer_npts": {
+                        "value": 0,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "SUSC_lockin_buffer_npts",
+                        "name": "buffer_npts",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "SUSC_lockin",
+                        "label": "Buffer number of stored points",
+                        "post_delay": 0
+                    }
+                },
+                "name": "SUSC_lockin",
+                "address": "GPIB0::12::7::INSTR",
+                "terminator": "",
+                "timeout": 5.0
+            },
+            "CAP_lockin": {
+                "functions": {
+                    "auto_gain": {},
+                    "auto_reserve": {},
+                    "auto_phase": {},
+                    "auto_offset": {},
+                    "reset": {},
+                    "disable_front_panel": {},
+                    "enable_front_panel": {},
+                    "send_trigger": {},
+                    "buffer_start": {},
+                    "buffer_pause": {},
+                    "buffer_reset": {}
+                },
+                "submodules": {},
+                "__class__": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                "parameters": {
+                    "IDN": {
+                        "value": {
+                            "vendor": "Stanford_Research_Systems",
+                            "model": "SR830",
+                            "serial": "s/n53182",
+                            "firmware": "ver1.07"
+                        },
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": {
+                            "vendor": "Stanford_Research_Systems",
+                            "model": "SR830",
+                            "serial": "s/n53182",
+                            "firmware": "ver1.07"
+                        },
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_IDN",
+                        "name": "IDN",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "IDN",
+                        "vals": "<Anything>",
+                        "post_delay": 0
+                    },
+                    "timeout": {
+                        "value": 5.0,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": 5.0,
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_timeout",
+                        "name": "timeout",
+                        "unit": "s",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "timeout",
+                        "vals": "<MultiType: Numbers v>=0, Enum: {None}>",
+                        "post_delay": 0
+                    },
+                    "phase": {
+                        "value": 0.0,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_phase",
+                        "name": "phase",
+                        "unit": "deg",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Phase",
+                        "vals": "<Numbers -360<=v<=729.99>",
+                        "post_delay": 0
+                    },
+                    "reference_source": {
+                        "value": "internal",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "1\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_reference_source",
+                        "name": "reference_source",
+                        "val_mapping": {
+                            "external": 0,
+                            "internal": 1
+                        },
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Reference source",
+                        "vals": "<Enum: {'internal', 'external'}>",
+                        "post_delay": 0
+                    },
+                    "frequency": {
+                        "value": 2500.0,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "2500\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_frequency",
+                        "name": "frequency",
+                        "unit": "Hz",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Frequency",
+                        "vals": "<Numbers 0.001<=v<=102000.0>",
+                        "post_delay": 0
+                    },
+                    "ext_trigger": {
+                        "value": "sine",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_ext_trigger",
+                        "name": "ext_trigger",
+                        "val_mapping": {
+                            "sine": 0,
+                            "TTL rising": 1,
+                            "TTL falling": 2
+                        },
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "External trigger",
+                        "vals": "<Enum: {'TTL rising', 'TTL falling', 'sine'}>",
+                        "post_delay": 0
+                    },
+                    "harmonic": {
+                        "value": 1,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "1\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_harmonic",
+                        "name": "harmonic",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Harmonic",
+                        "vals": "<Ints 1<=v<=19999>",
+                        "post_delay": 0
+                    },
+                    "amplitude": {
+                        "value": 1.0,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "1\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_amplitude",
+                        "name": "amplitude",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Amplitude",
+                        "vals": "<Numbers 0.004<=v<=5.0>",
+                        "post_delay": 0
+                    },
+                    "input_config": {
+                        "value": "a",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_input_config",
+                        "name": "input_config",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Input configuration",
+                        "vals": "<Enum: {'I 1M', 'I 100M', 'a', 'a-b'}>",
+                        "post_delay": 0
+                    },
+                    "input_shield": {
+                        "value": "float",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_input_shield",
+                        "name": "input_shield",
+                        "val_mapping": {
+                            "float": 0,
+                            "ground": 1
+                        },
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Input shield",
+                        "vals": "<Enum: {'ground', 'float'}>",
+                        "post_delay": 0
+                    },
+                    "input_coupling": {
+                        "value": "AC",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_input_coupling",
+                        "name": "input_coupling",
+                        "val_mapping": {
+                            "AC": 0,
+                            "DC": 1
+                        },
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Input coupling",
+                        "vals": "<Enum: {'AC', 'DC'}>",
+                        "post_delay": 0
+                    },
+                    "notch_filter": {
+                        "value": "off",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_notch_filter",
+                        "name": "notch_filter",
+                        "val_mapping": {
+                            "off": 0,
+                            "line in": 1,
+                            "2x line in": 2,
+                            "both": 3
+                        },
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Notch filter",
+                        "vals": "<Enum: {'both', '2x line in', 'line in', 'off'}>",
+                        "post_delay": 0
+                    },
+                    "sensitivity": {
+                        "value": 1e-05,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "11\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_sensitivity",
+                        "name": "sensitivity",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Sensitivity",
+                        "vals": "<Enum: {0.2, 0.5, 2e-09, 1, 1e-08, 5e-05, 2e-08, 0.0001, 0.05, 0.0002, 5e-06, 5e-08, 1e-06, 0.1, 5e-09, 2e-05, 0.02, 5e-07, 1e-05, 0.01, 2e-07, 0.005, 1e-07, 2e-06, 0.002, 0.001, 0.0005}>",
+                        "post_delay": 0
+                    },
+                    "reserve": {
+                        "value": "normal",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "1\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_reserve",
+                        "name": "reserve",
+                        "val_mapping": {
+                            "high": 0,
+                            "normal": 1,
+                            "low noise": 2
+                        },
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Reserve",
+                        "vals": "<Enum: {'low noise', 'normal', 'high'}>",
+                        "post_delay": 0
+                    },
+                    "time_constant": {
+                        "value": 0.1,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "8\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_time_constant",
+                        "name": "time_constant",
+                        "val_mapping": {
+                            "1e-05": 0,
+                            "3e-05": 1,
+                            "0.0001": 2,
+                            "0.0003": 3,
+                            "0.001": 4,
+                            "0.003": 5,
+                            "0.01": 6,
+                            "0.03": 7,
+                            "0.1": 8,
+                            "0.3": 9,
+                            "1": 10,
+                            "3": 11,
+                            "10": 12,
+                            "30": 13,
+                            "100": 14,
+                            "300": 15,
+                            "1000.0": 16,
+                            "3000.0": 17,
+                            "10000.0": 18,
+                            "30000.0": 19,
+                            "1e-05": 0,
+                            "3e-05": 1,
+                            "0.0001": 2,
+                            "0.0003": 3,
+                            "0.001": 4,
+                            "0.003": 5,
+                            "0.01": 6,
+                            "0.03": 7,
+                            "0.1": 8,
+                            "0.3": 9,
+                            "1": 10,
+                            "3": 11,
+                            "10": 12,
+                            "30": 13,
+                            "100": 14,
+                            "300": 15,
+                            "1000.0": 16,
+                            "3000.0": 17,
+                            "10000.0": 18,
+                            "30000.0": 19
+                        },
+                        "unit": "s",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Time constant",
+                        "vals": "<Enum: {0.03, 0.1, 0.003, 0.3, 1, 3, 100, 1e-05, 1000.0, 10, 0.0003, 0.01, 300, 10000.0, 30000.0, 30, 3000.0, 0.0001, 3e-05, 0.001}>",
+                        "post_delay": 0
+                    },
+                    "filter_slope": {
+                        "value": 24,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "3\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_filter_slope",
+                        "name": "filter_slope",
+                        "val_mapping": {
+                            "6": 0,
+                            "12": 1,
+                            "18": 2,
+                            "24": 3,
+                            "6": 0,
+                            "12": 1,
+                            "18": 2,
+                            "24": 3
+                        },
+                        "unit": "dB/oct",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Filter slope",
+                        "vals": "<Enum: {24, 18, 12, 6}>",
+                        "post_delay": 0
+                    },
+                    "sync_filter": {
+                        "value": "off",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_sync_filter",
+                        "name": "sync_filter",
+                        "val_mapping": {
+                            "off": 0,
+                            "on": 1
+                        },
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Sync filter",
+                        "vals": "<Enum: {'on', 'off'}>",
+                        "post_delay": 0
+                    },
+                    "X_offset": {
+                        "value": [
+                            0.0,
+                            0
+                        ],
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0,0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_X_offset",
+                        "name": "X_offset",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "X_offset",
+                        "post_delay": 0
+                    },
+                    "Y_offset": {
+                        "value": [
+                            0.0,
+                            0
+                        ],
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0,0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_Y_offset",
+                        "name": "Y_offset",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Y_offset",
+                        "post_delay": 0
+                    },
+                    "R_offset": {
+                        "value": [
+                            0.0,
+                            0
+                        ],
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0,0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_R_offset",
+                        "name": "R_offset",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "R_offset",
+                        "post_delay": 0
+                    },
+                    "aux_in1": {
+                        "value": 0.002,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0.002\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_aux_in1",
+                        "name": "aux_in1",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Aux input 1",
+                        "post_delay": 0
+                    },
+                    "aux_out1": {
+                        "value": -0.003,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "-0.003\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_aux_out1",
+                        "name": "aux_out1",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Aux output 1",
+                        "post_delay": 0
+                    },
+                    "aux_in2": {
+                        "value": 0.00166667,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0.00166667\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_aux_in2",
+                        "name": "aux_in2",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Aux input 2",
+                        "post_delay": 0
+                    },
+                    "aux_out2": {
+                        "value": 0.0,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_aux_out2",
+                        "name": "aux_out2",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Aux output 2",
+                        "post_delay": 0
+                    },
+                    "aux_in3": {
+                        "value": 0.00266667,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0.00266667\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_aux_in3",
+                        "name": "aux_in3",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Aux input 3",
+                        "post_delay": 0
+                    },
+                    "aux_out3": {
+                        "value": -1.048,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "-1.048\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_aux_out3",
+                        "name": "aux_out3",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Aux output 3",
+                        "post_delay": 0
+                    },
+                    "aux_in4": {
+                        "value": 0.00266667,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0.00266667\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_aux_in4",
+                        "name": "aux_in4",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Aux input 4",
+                        "post_delay": 0
+                    },
+                    "aux_out4": {
+                        "value": 0.0,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_aux_out4",
+                        "name": "aux_out4",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Aux output 4",
+                        "post_delay": 0
+                    },
+                    "output_interface": {
+                        "value": "GPIB",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "1\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_output_interface",
+                        "name": "output_interface",
+                        "val_mapping": {
+                            "RS232": "0\n",
+                            "GPIB": "1\n"
+                        },
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Output interface",
+                        "vals": "<Enum: {'GPIB', 'RS232'}>",
+                        "post_delay": 0
+                    },
+                    "ch1_ratio": {
+                        "value": "none",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "none",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_ch1_ratio",
+                        "name": "ch1_ratio",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Channel 1 ratio",
+                        "vals": "<Strings>",
+                        "post_delay": 0
+                    },
+                    "ch1_display": {
+                        "value": "X",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "X",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_ch1_display",
+                        "name": "ch1_display",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Channel 1 display",
+                        "vals": "<Strings>",
+                        "post_delay": 0
+                    },
+                    "ch1_databuffer": {
+                        "ts": null,
+                        "__class__": "qcodes.instrument_drivers.stanford_research.SR830.ChannelBuffer",
+                        "full_name": "CAP_lockin_ch1_databuffer",
+                        "setpoint_labels": [
+                            "Time"
+                        ],
+                        "name": "ch1_databuffer",
+                        "setpoint_names": [
+                            "Time"
+                        ],
+                        "setpoint_units": [
+                            "s"
+                        ],
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "ch1_databuffer",
+                        "post_delay": 0
+                    },
+                    "ch2_ratio": {
+                        "value": "none",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "none",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_ch2_ratio",
+                        "name": "ch2_ratio",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Channel 2 ratio",
+                        "vals": "<Strings>",
+                        "post_delay": 0
+                    },
+                    "ch2_display": {
+                        "value": "Y",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "Y",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_ch2_display",
+                        "name": "ch2_display",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Channel 2 display",
+                        "vals": "<Strings>",
+                        "post_delay": 0
+                    },
+                    "ch2_databuffer": {
+                        "ts": null,
+                        "__class__": "qcodes.instrument_drivers.stanford_research.SR830.ChannelBuffer",
+                        "full_name": "CAP_lockin_ch2_databuffer",
+                        "setpoint_labels": [
+                            "Time"
+                        ],
+                        "name": "ch2_databuffer",
+                        "setpoint_names": [
+                            "Time"
+                        ],
+                        "setpoint_units": [
+                            "s"
+                        ],
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "ch2_databuffer",
+                        "post_delay": 0
+                    },
+                    "X": {
+                        "value": 2.28175e-07,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "2.28175e-007\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_X",
+                        "name": "X",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "X",
+                        "post_delay": 0
+                    },
+                    "Y": {
+                        "value": -4.86479e-06,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "-4.86479e-006\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_Y",
+                        "name": "Y",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Y",
+                        "post_delay": 0
+                    },
+                    "R": {
+                        "value": 4.86433e-06,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "4.86433e-006\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_R",
+                        "name": "R",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "R",
+                        "post_delay": 0
+                    },
+                    "P": {
+                        "value": -87.498,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "-87.498\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_P",
+                        "name": "P",
+                        "unit": "deg",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "P",
+                        "post_delay": 0
+                    },
+                    "buffer_SR": {
+                        "value": 1,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "4\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_buffer_SR",
+                        "name": "buffer_SR",
+                        "val_mapping": {
+                            "0.0625": 0,
+                            "0.125": 1,
+                            "0.25": 2,
+                            "0.5": 3,
+                            "1": 4,
+                            "2": 5,
+                            "4": 6,
+                            "8": 7,
+                            "16": 8,
+                            "32": 9,
+                            "64": 10,
+                            "128": 11,
+                            "256": 12,
+                            "512": 13,
+                            "Trigger": 14,
+                            "0.0625": 0,
+                            "0.125": 1,
+                            "0.25": 2,
+                            "0.5": 3,
+                            "1": 4,
+                            "2": 5,
+                            "4": 6,
+                            "8": 7,
+                            "16": 8,
+                            "32": 9,
+                            "64": 10,
+                            "128": 11,
+                            "256": 12,
+                            "512": 13
+                        },
+                        "unit": "Hz",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Buffer sample rate",
+                        "vals": "<Enum: {0.0625, 0.125, 1, 0.25, 0.5, 2, 4, 32, 8, 64, 128, 256, 16, 512, 'Trigger'}>",
+                        "post_delay": 0
+                    },
+                    "buffer_acq_mode": {
+                        "value": "single shot",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_buffer_acq_mode",
+                        "name": "buffer_acq_mode",
+                        "val_mapping": {
+                            "single shot": 0,
+                            "loop": 1
+                        },
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Buffer acquistion mode",
+                        "vals": "<Enum: {'single shot', 'loop'}>",
+                        "post_delay": 0
+                    },
+                    "buffer_trig_mode": {
+                        "value": "OFF",
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_buffer_trig_mode",
+                        "name": "buffer_trig_mode",
+                        "val_mapping": {
+                            "ON": 1,
+                            "OFF": 0
+                        },
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Buffer trigger start mode",
+                        "vals": "<Enum: {'ON', 'OFF'}>",
+                        "post_delay": 0
+                    },
+                    "buffer_npts": {
+                        "value": 0,
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": "0\n",
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "CAP_lockin_buffer_npts",
+                        "name": "buffer_npts",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "qcodes.instrument_drivers.stanford_research.SR830.SR830",
+                        "instrument_name": "CAP_lockin",
+                        "label": "Buffer number of stored points",
+                        "post_delay": 0
+                    }
+                },
+                "name": "CAP_lockin",
+                "address": "GPIB0::28::7::INSTR",
+                "terminator": "",
+                "timeout": 5.0
+            },
+            "daq_ai": {
+                "functions": {},
+                "submodules": {},
+                "__class__": "instruments.daq.DAQAnalogInputs",
+                "parameters": {
+                    "IDN": {
+                        "value": {
+                            "vendor": null,
+                            "model": "daq_ai",
+                            "serial": null,
+                            "firmware": null
+                        },
+                        "ts": "2018-09-14 14:27:17",
+                        "raw_value": {
+                            "vendor": null,
+                            "model": "daq_ai",
+                            "serial": null,
+                            "firmware": null
+                        },
+                        "__class__": "qcodes.instrument.parameter.Parameter",
+                        "full_name": "daq_ai_IDN",
+                        "name": "IDN",
+                        "unit": "",
+                        "inter_delay": 0,
+                        "instrument": "instruments.daq.DAQAnalogInputs",
+                        "instrument_name": "daq_ai",
+                        "label": "IDN",
+                        "vals": "<Anything>",
+                        "post_delay": 0
+                    },
+                    "voltage": {
+                        "ts": null,
+                        "__class__": "instruments.daq.DAQAnalogInputVoltages",
+                        "full_name": "daq_ai_voltage",
+                        "name": "voltage",
+                        "unit": "V",
+                        "inter_delay": 0,
+                        "instrument": "instruments.daq.DAQAnalogInputs",
+                        "instrument_name": "daq_ai",
+                        "label": "Voltage",
+                        "post_delay": 0
+                    }
+                },
+                "name": "daq_ai",
+                "metadata": {
+                    "dev_name": "Dev1",
+                    "rate": "25000.0 Hz",
+                    "channels": {
+                        "MAG": 0,
+                        "SUSCX": 1,
+                        "SUSCY": 2,
+                        "CAP": 3
+                    }
+                }
+            }
+        },
+        "parameters": {},
+        "components": {},
+        "default_measurement": []
+    },
+    "loop": {
+        "__class__": "qcodes.loops.ActiveLoop",
+        "sweep_values": {
+            "parameter": {
+                "value": -2.245454545454545,
+                "ts": "2018-09-14 14:26:47",
+                "raw_value": -2.245454545454545,
+                "__class__": "qcodes.instrument.parameter.Parameter",
+                "full_name": "benders_position_y",
+                "name": "position_y",
+                "unit": "V",
+                "inter_delay": 0,
+                "instrument": "scanner.Scanner",
+                "instrument_name": "benders",
+                "label": "y position",
+                "vals": "<Numbers -10<=v<=10>",
+                "post_delay": 0
+            },
+            "values": [
+                {
+                    "first": -2.8,
+                    "last": -2.2,
+                    "num": 100,
+                    "type": "linear"
+                }
+            ]
+        },
+        "delay": 0.1,
+        "actions": [
+            {
+                "type": "Task",
+                "func": "<bound method Scanner.scan_line of <Scanner: benders>>"
+            },
+            {
+                "type": "Task",
+                "func": "<bound method Task.start of Task(name=scan_plane_ai_task)>"
+            },
+            {
+                "type": "Task",
+                "func": "<bound method Scanner.control_ao_task of <Scanner: benders>>"
+            },
+            {
+                "ts": null,
+                "__class__": "instruments.daq.DAQAnalogInputVoltages",
+                "full_name": "daq_ai_voltage",
+                "name": "voltage",
+                "unit": "V",
+                "inter_delay": 0,
+                "instrument": "instruments.daq.DAQAnalogInputs",
+                "instrument_name": "daq_ai",
+                "label": "Voltage",
+                "post_delay": 0
+            },
+            {
+                "type": "Task",
+                "func": "<bound method Task.wait_until_done of Task(name=scan_plane_ai_task)>"
+            },
+            {
+                "type": "Task",
+                "func": "<bound method Scanner.control_ao_task of <Scanner: benders>>"
+            },
+            {
+                "type": "Task",
+                "func": "<bound method Task.stop of Task(name=scan_plane_ai_task)>"
+            },
+            {
+                "type": "Task",
+                "func": "<bound method Scanner.control_ao_task of <Scanner: benders>>"
+            },
+            {
+                "type": "Task",
+                "func": "<bound method Scanner.control_ao_task of <Scanner: benders>>"
+            },
+            {
+                "type": "Task",
+                "func": "<bound method Scanner.goto_start_of_next_line of <Scanner: benders>>"
+            },
+            {
+                "type": "Task",
+                "func": "<bound method ScanPlot.update of <plots.ScanPlot object at 0x0000019B9EDE3CC0>>"
+            },
+            {
+                "type": "Task",
+                "func": "<bound method ScanPlot.save of <plots.ScanPlot object at 0x0000019B9EDE3CC0>>"
+            },
+            {
+                "type": "Task",
+                "func": "<bound method Counter.advance of <utils.Counter object at 0x0000019B9EDE3B70>>"
+            }
+        ],
+        "then_actions": [
+            {
+                "type": "Task",
+                "func": "<bound method Task.stop of Task(name=scan_plane_ai_task)>"
+            },
+            {
+                "type": "Task",
+                "func": "<bound method Task.close of Task(name=scan_plane_ai_task)>"
+            },
+            {
+                "type": "Task",
+                "func": "<bound method Instrument.close of <DAQAnalogInputs: daq_ai>>"
+            },
+            {
+                "type": "Task",
+                "func": "<bound method Scanner.goto of <Scanner: benders>>"
+            }
+        ],
+        "metadata": {
+            "fname": "scan",
+            "surface_type": "plane",
+            "fast_ax": "x",
+            "range": {
+                "x": "0.6 V",
+                "y": "0.6 V"
+            },
+            "center": {
+                "x": "2 V",
+                "y": "-2.5 V"
+            },
+            "height": "0 V",
+            "scan_rate": "10 pixels/s",
+            "scan_size": {
+                "x": 100,
+                "y": 100
+            },
+            "channels": {
+                "MAG": {
+                    "label": "Magnetometry",
+                    "gain": 1,
+                    "filters": {
+                        "lowpass": {
+                            "cutoff": "100 kHz",
+                            "slope": "12 dB/octave"
+                        },
+                        "highpass": {
+                            "cutoff": "0 Hz",
+                            "slope": "0 dB/octave"
+                        }
+                    },
+                    "unit": "mPhi0",
+                    "unit_latex": "m$\\Phi_0$",
+                    "idx": 0
+                },
+                "SUSCX": {
+                    "lockin": {
+                        "name": "SUSC",
+                        "amplitude": "2 V",
+                        "frequency": "280 Hz"
+                    },
+                    "label": "Susceptibility",
+                    "gain": 1,
+                    "r_lead": "1 kOhm",
+                    "unit": "Phi0/A",
+                    "unit_latex": "$\\Phi_0$/A",
+                    "idx": 1
+                },
+                "SUSCY": {
+                    "lockin": {
+                        "name": "SUSC"
+                    },
+                    "label": "Susceptibility (out of phase)",
+                    "gain": 1,
+                    "r_lead": "1 kOhm",
+                    "unit": "Phi0/A",
+                    "unit_latex": "$\\Phi_0$/A",
+                    "idx": 2
+                },
+                "CAP": {
+                    "lockin": {
+                        "name": "CAP",
+                        "amplitude": "1 V",
+                        "frequency": "2.5 kHz"
+                    },
+                    "label": "Capacitance",
+                    "gain": 1,
+                    "unit": "fF",
+                    "unit_latex": "fF",
+                    "idx": 3
+                }
+            },
+            "prefactors": {
+                "MAG": "961.5384615384613 milliPhi0 / volt",
+                "SUSCX": "24.038461538461537 Phi0 / ampere / volt",
+                "SUSCY": "24.038461538461537 Phi0 / ampere / volt",
+                "CAP": "3.0674846625766867 femtofarad / volt"
+            }
+        },
+        "ts_start": "2018-09-14 14:27:17",
+        "use_threads": false,
+        "ts_end": "2018-09-14 14:46:55"
+    },
+    "__class__": "qcodes.data.data_set.DataSet",
+    "location": "data/2018-09-14/#024_scan_14-27-17",
+    "arrays": {
+        "benders_position_y_set": {
+            "__class__": "qcodes.data.data_array.DataArray",
+            "raw_value": -2.245454545454545,
+            "full_name": "benders_position_y",
+            "name": "position_y",
+            "unit": "V",
+            "inter_delay": 0,
+            "instrument": "scanner.Scanner",
+            "instrument_name": "benders",
+            "label": "y position",
+            "vals": "<Numbers -10<=v<=10>",
+            "post_delay": 0,
+            "array_id": "benders_position_y_set",
+            "shape": [
+                100
+            ],
+            "action_indices": [],
+            "is_setpoint": true
+        },
+        "index0_set": {
+            "__class__": "qcodes.data.data_array.DataArray",
+            "array_id": "index0_set",
+            "name": "index0",
+            "shape": [
+                100,
+                4
+            ],
+            "unit": null,
+            "label": "index0",
+            "action_indices": [
+                3
+            ],
+            "is_setpoint": true
+        },
+        "index1_set": {
+            "__class__": "qcodes.data.data_array.DataArray",
+            "array_id": "index1_set",
+            "name": "index1",
+            "shape": [
+                100,
+                4,
+                100
+            ],
+            "unit": null,
+            "label": "index1",
+            "action_indices": [
+                3
+            ],
+            "is_setpoint": true
+        },
+        "daq_ai_voltage": {
+            "__class__": "qcodes.data.data_array.DataArray",
+            "full_name": "daq_ai_voltage",
+            "name": "voltage",
+            "unit": "V",
+            "inter_delay": 0,
+            "instrument": "instruments.daq.DAQAnalogInputs",
+            "instrument_name": "daq_ai",
+            "label": "Voltage",
+            "post_delay": 0,
+            "array_id": "daq_ai_voltage",
+            "shape": [
+                100,
+                4,
+                100
+            ],
+            "action_indices": [
+                3
+            ],
+            "is_setpoint": false
+        }
+    },
+    "formatter": "qcodes.data.gnuplot_format.GNUPlotFormat",
+    "io": "<DiskIO, base_location='E:\\\\Dropbox (Moler group)\\\\TeamBF4K\\\\data\\\\2018-09-06YBCO_highTc'>"
+}
