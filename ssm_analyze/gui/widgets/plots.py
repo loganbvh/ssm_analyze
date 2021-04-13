@@ -38,6 +38,34 @@ plt.rcParams.update({"font.size": font_size})
 __all__ = ["DataSetPlotter"]
 
 
+def format_units(units, skip=True):
+    if skip:
+        return str(units)
+    units = str(units).lower()
+    scale_map = {
+        "giga": "G",
+        "mega": "M",
+        "kilo": "k",
+        "milli": "m",
+        "micro": "$\\mu$",
+        "nano": "n",
+        "pico": "p",
+        "femto": "f",
+    }
+    unit_map = {
+        "meter": "m",
+        "phi0": "$\\Phi_0$",
+        "farad": "F",
+        "ampere": "A",
+        "volt": "V",
+    }
+    for name, abbrev in scale_map.items():
+        units = units.replace(name, abbrev)
+    for name, abbrev in unit_map.items():
+        units = units.replace(name, abbrev)
+    return units
+
+
 class PlotWidget(QtWidgets.QWidget):
     """Plotting widget comprised of a matplotlib canvas and a pyqtgraph widget, along with some
     options like slices of image data, axis transforms, etc.
@@ -322,11 +350,12 @@ class PlotWidget(QtWidgets.QWidget):
                 list of [name, 0D or 1D array of pint.Quantities].
         """
         label = ys[0]
-        xlabel = f"{xs[0]} [{xs[1].units}]"
-        ylabel = f"{ys[0]} [{ys[1].units}]"
+        use_pyqt = self.get_opt("pyqtgraph")
+        xlabel = f"{xs[0]} [{format_units(xs[1].units, use_pyqt)}]"
+        ylabel = f"{ys[0]} [{format_units(ys[1].units, use_pyqt)}]"
         marker = "."
         # ymin, ymax = np.min(ys[1]), np.max(ys[1])
-        if self.get_opt("pyqtgraph"):
+        if use_pyqt:
             self.plot_1d_qt(xs, ys, xlabel, ylabel, label)
             self.pyqt_plot.show()
             self.pyqt_splitter.show()
@@ -390,12 +419,13 @@ class PlotWidget(QtWidgets.QWidget):
             slice_state (optional, str): Requested 1D slice state, in (None, 'x', 'y'). Default: None.
         """
         cmap = cmap or self.mpl_cmap
-        xlabel = f"{xs[0]} [{xs[1].units}]"
-        ylabel = f"{ys[0]} [{ys[1].units}]"
-        zlabel = f"{zs[0]} [{zs[1].units}]"
+        use_pyqt = self.get_opt("pyqtgraph")
+        xlabel = f"{xs[0]} [{format_units(xs[1].units, use_pyqt)}]"
+        ylabel = f"{ys[0]} [{format_units(ys[1].units, use_pyqt)}]"
+        zlabel = f"{zs[0]} [{format_units(zs[1].units, use_pyqt)}]"
         zmin, zmax = np.nanmin(zs[1].magnitude), np.nanmax(zs[1].magnitude)
         self.rotate_widget.show()
-        if self.get_opt("pyqtgraph"):
+        if use_pyqt:
             self.plot_2d_qt(xs, ys, zs, xlabel, ylabel, zlabel, angle=angle)
             self.pyqt_imview.show()
             self.pyqt_splitter.show()

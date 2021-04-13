@@ -16,8 +16,6 @@ warnings.filterwarnings(
 )
 warnings.filterwarnings("ignore", message="invalid value encountered in less")
 
-app = QtWidgets.QApplication([])
-
 
 class MainWindow(QtWidgets.QMainWindow):
     """Main window for scanning-squid-analysis gui."""
@@ -26,8 +24,6 @@ class MainWindow(QtWidgets.QMainWindow):
         super().__init__()
         self.dataset = None
         self.setWindowTitle("scanning-squid-analysis")
-        icon_path = os.path.join(os.path.dirname(__file__), "img", "icon.png")
-        app.setWindowIcon(QtGui.QIcon(icon_path))
         self.shell = QJupyterWidget()
         self.station_snap = MetaWidget()
         self.measurement_meta = MetaWidget()
@@ -124,7 +120,9 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
 def main():
+    icon_path = os.path.join(os.path.dirname(__file__), "img", "icon.png")
     app = QtWidgets.QApplication([])
+    app.setWindowIcon(QtGui.QIcon(icon_path))
     win = MainWindow()
     win.showMaximized()
     app.lastWindowClosed.connect(sys.exit)
