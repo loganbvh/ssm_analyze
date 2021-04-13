@@ -10,7 +10,7 @@ LONG_DESCRIPTION = __doc__
 NAME = "ssm_analyze"
 AUTHOR = "Logan Bishop-Van Horn"
 AUTHOR_EMAIL = "logan.bvh@gmail.com"
-URL = "https://github.com/loganbvh/scanning-squid-analysis"
+URL = "https://github.com/loganbvh/ssm_analyze"
 LICENSE = "MIT"
 PYTHON_VERSION = ">=3.6"
 
@@ -54,13 +54,16 @@ KEYWORDS = "scanning SQUID microscopy"
 
 setup(
     name=NAME,
-    version="0.1",
+    version="0.2.0",
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     url=URL,
     license=LICENSE,
     packages=find_packages(),
     include_package_data=True,
+    entry_points={
+        "console_scripts": ["ssm_analyze=ssm_analyze.gui.window:main"],
+    },
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
