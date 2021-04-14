@@ -1,5 +1,6 @@
 import os
 import sys
+import numpy as np
 from .qt import QtGui, QtWidgets, QtCore, Qt
 import matplotlib.pyplot as plt
 from .widgets import QJupyterWidget, MetaWidget, DataSetBrowser, DataSetPlotter
@@ -11,9 +12,7 @@ warnings.filterwarnings("ignore", message="tight_layout")
 warnings.filterwarnings("ignore", message="Tight layout not applied.")
 warnings.filterwarnings("ignore", message="All-NaN slice encountered")
 warnings.filterwarnings("ignore", message="All-NaN axis encountered")
-warnings.filterwarnings(
-    "ignore", message="Attempting to set identical bottom==top results"
-)
+warnings.filterwarnings("ignore", message="Attempting to set identical bottom")
 warnings.filterwarnings("ignore", message="invalid value encountered in less")
 
 
@@ -31,10 +30,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.dataset_browser.dataset_selector.clicked.connect(self.load_dataset)
         self.dataset_plotter = DataSetPlotter()
         self.dataset_browser.dataset_selector.clicked.connect(self.update_dataset_plot)
-
-        import numpy
-
-        self.shell.push_variables({"np": numpy, "plt": plt})
+        self.shell.push_variables({"np": np, "plt": plt})
 
         self.file_menu = self.menuBar().addMenu("File")
         self.plot_menu = self.menuBar().addMenu("Plot")
@@ -123,8 +119,15 @@ def main():
     icon_path = os.path.join(os.path.dirname(__file__), "img", "icon.png")
     app = QtWidgets.QApplication([])
     app.setWindowIcon(QtGui.QIcon(icon_path))
+
     win = MainWindow()
+    sample_data_dir = os.path.abspath(
+        os.path.join(os.path.dirname(__file__), os.pardir, "sample_data", "data")
+    )
+    win.dataset_browser.directory = sample_data_dir
+    win.dataset_browser.set_available_dates()
     win.showMaximized()
+
     app.lastWindowClosed.connect(sys.exit)
     app.exec_()
 

@@ -61,10 +61,6 @@ class DataSetBrowser(QtWidgets.QWidget):
             return None
         fpath = os.path.join(self.directory, self.date_name, self.dataset_name)
         return load_data(location=fpath)
-        # try:
-        #     return qc.load_data(location=fpath)
-        # except:
-        #     return None
 
     def set_available_datasets(self, index):
         """Populates self.dataset_list with the available datasets for the currently selected date."""

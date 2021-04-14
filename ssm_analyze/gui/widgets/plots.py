@@ -959,36 +959,36 @@ class PlotWidget(QtWidgets.QWidget):
             zs = [zs[0], z * zs[1].units]  # restore units after background subtraction
         if idx == 1:  # min
             if zs is None:
-                ys = [ys[0], ys[1] - np.min(ys[1])]
+                ys = [ys[0], ys[1].units * (ys[1].m - np.min(ys[1].m))]
             elif not line_by_line:
-                zs = [zs[0], zs[1] - np.min(zs[1])]
+                zs = [zs[0], zs[1].units * (zs[1].m - np.min(zs[1].m))]
         elif idx == 2:  # max
             if zs is None:
-                ys = [ys[0], ys[1] - np.max(ys[1])]
+                ys = [ys[0], ys[1].units * (ys[1].m - np.max(ys[1].m))]
             elif not line_by_line:
-                zs = [zs[0], zs[1] - np.max(zs[1])]
+                zs = [zs[0], zs[1].units * (zs[1].m - np.max(zs[1].m))]
         elif idx == 3:  # mean
             if zs is None:
-                ys = [ys[0], ys[1] - np.mean(ys[1])]
+                ys = [ys[0], ys[1].units * (ys[1].m - np.mean(ys[1].m))]
             elif not line_by_line:
-                zs = [zs[0], zs[1] - np.mean(zs[1])]
+                zs = [zs[0], zs[1].units * (zs[1].m - np.mean(zs[1].m))]
         elif idx == 4:  # median
             if zs is None:
-                ys = [ys[0], ys[1] - ys[1].units * np.median(ys[1])]
+                ys = [ys[0], ys[1] - ys[1].units * np.median(ys[1].m)]
             elif not line_by_line:
                 zs = [
                     zs[0],
-                    zs[1] - zs[1].units * np.median(np.reshape(zs[1], (-1, 1))),
+                    zs[1] - zs[1].units * np.median(np.reshape(zs[1].m, (-1, 1))),
                 ]
         elif idx == 5:  # linear
             if zs is None:
                 slope, offset = np.polyfit(xs[1].magnitude, ys[1].magnitude, 1)
                 ys = [ys[0], ys[1] - ys[1].units * (slope * xs[1].magnitude + offset)]
             elif not line_by_line:
-                X, Y = np.meshgrid(xs[1], ys[1], indexing="ij")
+                X, Y = np.meshgrid(xs[1].m, ys[1].m, indexing="ij")
                 x = np.reshape(X, (-1, 1))
                 y = np.reshape(Y, (-1, 1))
-                data = np.reshape(zs[1].magnitude, (-1, 1))
+                data = np.reshape(zs[1].m, (-1, 1))
                 z = np.column_stack((x, y, np.ones_like(x)))
                 plane, _, _, _ = lstsq(z, data)
                 zs = [
@@ -997,7 +997,7 @@ class PlotWidget(QtWidgets.QWidget):
                 ]
         self.plot_arrays(xs, ys, zs=zs, title=self.fig_title)
 
-    def export_mpl(self):
+    def export_mpl(self, dpi=220):
         """Open dialog to export matplotlib figure."""
         if self.dataset is None:
             return
@@ -1005,7 +1005,8 @@ class PlotWidget(QtWidgets.QWidget):
         path, _ = QtWidgets.QFileDialog.getSaveFileName(
             self, "Export matplotlib", name, "PNG (*.png)"
         )
-        self.fig.savefig(path)
+        print(f"Saving fig with dpi={dpi}")
+        self.fig.savefig(path, dpi=dpi)
 
     def export_qt(self, width=1200):
         """Open dialog to export pyqtgraph figure.

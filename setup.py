@@ -2,6 +2,7 @@
 [scanning-squid](https://github.com/moler-group/scanning-squid) python package.
 """
 
+import os
 from setuptools import setup, find_packages
 
 DESCRIPTION = "Analysis GUI for scanning SQUID microscopy"
@@ -52,15 +53,25 @@ PLATFORMS = ["Linux", "Mac OSX", "Unix", "Windows"]
 KEYWORDS = "scanning SQUID microscopy"
 
 
+def package_files(directory):
+    paths = []
+    for (path, directories, filenames) in os.walk(directory):
+        for filename in filenames:
+            paths.append(os.path.join(os.pardir, path, filename))
+    return paths
+
+
 setup(
     name=NAME,
-    version="0.2.1",
+    version="0.2.5",
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     url=URL,
     license=LICENSE,
     packages=find_packages(),
-    package_data={"ssm_analyze": ["gui/img/icon.png"]},
+    package_data={
+        "ssm_analyze": ["gui/img/icon.png"] + package_files("ssm_analyze/sample_data"),
+    },
     include_package_data=True,
     entry_points={
         "console_scripts": ["ssm_analyze=ssm_analyze.gui.window:main"],
