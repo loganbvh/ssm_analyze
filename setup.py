@@ -63,7 +63,7 @@ def package_files(directory):
 
 setup(
     name=NAME,
-    version="0.2.5",
+    version="0.2.6",
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     url=URL,

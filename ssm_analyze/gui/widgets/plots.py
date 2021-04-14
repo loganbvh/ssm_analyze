@@ -1005,7 +1005,6 @@ class PlotWidget(QtWidgets.QWidget):
         path, _ = QtWidgets.QFileDialog.getSaveFileName(
             self, "Export matplotlib", name, "PNG (*.png)"
         )
-        print(f"Saving fig with dpi={dpi}")
         self.fig.savefig(path, dpi=dpi)
 
     def export_qt(self, width=1200):
