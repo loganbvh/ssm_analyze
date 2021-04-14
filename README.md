@@ -4,7 +4,7 @@
 
 ## Installation
 
-It is recommended to install `ssm_analyze` inside of a dedicated [conda environment](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands). `ssm_analyze` has been tested on Python 3.6, 3.7, 3.8 and 3.9. You can create a [conda environment](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands) using the following commands:
+It is recommended to install `ssm_analyze` inside of a dedicated [conda environment](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands). `ssm_analyze` has been tested on Python 3.6, 3.7, 3.8 and 3.9. You can create a conda environment using the following commands:
 
 ```
 conda create --name <env-name> python=<3.6, 3.7, 3.8, or 3.9>
