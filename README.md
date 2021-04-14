@@ -11,7 +11,7 @@ conda create --name <env-name> python=<3.6, 3.7, 3.8, or 3.9>
 conda activate <env-name>
 ```
 
-After creating and activating your conda env, you can install `ssm-analyze` in one of two ways:
+After creating and activating your conda env, you can install `ssm_analyze` in one of two ways:
 
 ### Install via [pip](https://pypi.org/project/ssm-analyze/)
 ```
@@ -26,6 +26,7 @@ pip install ssm-analyze
   ```
 
 ## Usage
+- Activate your conda environment: `conda activate <env-name>`
 - Start the GUI by running either of the below commands from the command line:
   ```
   ssm_analyze
