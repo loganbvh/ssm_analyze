@@ -5,7 +5,7 @@ import warnings
 import matplotlib.pyplot as plt
 import numpy as np
 
-from .qt import Qt, QtCore, QtGui, QtWidgets
+from .qt import Qt, QtGui, QtWidgets
 from .utils import load_json_ordered
 from .widgets import DataSetBrowser, DataSetPlotter, MetaWidget, QJupyterWidget
 

@@ -1,5 +1,5 @@
 from ..qjsonmodel import QJsonModel
-from ..qt import *
+from ..qt import Qt, QtWidgets
 from ..utils import load_json_ordered
 
 

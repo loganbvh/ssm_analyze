@@ -1,8 +1,7 @@
 import pickle
-from typing import Callable, NamedTuple
+from typing import Callable, NamedTuple, Optional
 
 import h5py
-import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 import numpy as np
 import pyqtgraph as pg
@@ -15,8 +14,8 @@ from scipy.io import savemat
 from scipy.linalg import lstsq
 from scipy.ndimage.interpolation import rotate
 
-from ..qt import *
-from ..utils import *
+from ..qt import FigureCanvasQTAgg, NavigationToolbar2QT, Qt, QtCore, QtWidgets
+from ..utils import scan_to_arrays, set_h5_attrs, td_to_arrays
 from .sliders import SliderWidget, VertSlider
 
 mpl_cmaps = plt.colormaps()
@@ -514,7 +513,7 @@ class PlotWidget(QtWidgets.QWidget):
                 # lines indicating cmin and cmax on histogram
                 upper = ax_hist.axhline(max_val, color="k", lw=2)
                 lower = ax_hist.axhline(min_val, color="k", lw=2)
-                ax_hist.set_ylim(cax.get_xlim())
+                ax_hist.set_ylim(cax.get_ylim())
                 ax_hist.set_xticklabels([])
                 ax_hist.grid(self.get_opt("grid"))
                 # ax_hist.invert_xaxis()
@@ -725,23 +724,22 @@ class PlotWidget(QtWidgets.QWidget):
             slice_xs = slice_xs[mask]
             slice_ys = slice_ys[mask]
 
+            points = np.array([slice_xs, slice_ys]).T.reshape(-1, 1, 2)
+            # make segments overlap
+            segments = np.concatenate([points[:-2], points[1:-1], points[2:]], axis=1)
+            if mask.any():
+                vmin, vmax = np.min(slice_ys), np.max(slice_ys)
+            else:
+                vmin, vmax = 0, 1
+            lc = LineCollection(
+                segments,
+                cmap=cmap,
+                norm=colors.Normalize(vmin, vmax),
+            )
+            lc.set_array(slice_ys)
+            lc.set_linewidth(plot_lw)
+
             if color_by_value:
-                points = np.array([slice_xs, slice_ys]).T.reshape(-1, 1, 2)
-                # make segments overlap
-                segments = np.concatenate(
-                    [points[:-2], points[1:-1], points[2:]], axis=1
-                )
-                if mask.any():
-                    vmin, vmax = np.min(slice_ys), np.max(slice_ys)
-                else:
-                    vmin, vmax = 0, 1
-                lc = LineCollection(
-                    segments,
-                    cmap=cmap,
-                    norm=colors.Normalize(vmin, vmax),
-                )
-                lc.set_array(slice_ys)
-                lc.set_linewidth(plot_lw)
                 ax1.add_collection(lc)
                 # we need an invisible line so that the figure draws correctly
                 (line,) = ax1.plot([0, 0], alpha=0)
@@ -870,24 +868,24 @@ class PlotWidget(QtWidgets.QWidget):
             if self.xy_units_box.isChecked():
                 try:
                     xs.array.ito(self.xy_units.text())
-                except:
+                except Exception:
                     self.xy_units.setText(str(xs.array.units))
             if zs is None:
                 name = ys.name
                 try:
                     ys.array.ito(self.units.text())
-                except:
+                except Exception:
                     self.units.setText(str(ys.array.units))
             else:
                 name = zs.name
                 if self.xy_units_box.isChecked():
                     try:
                         ys.array.ito(self.xy_units.text())
-                    except:
+                    except Exception:
                         self.xy_units.setText(str(ys.array.units))
                 try:
                     zs.array.ito(self.units.text())
-                except:
+                except Exception:
                     self.units.setText(str(zs.array.units))
             name = ys.name if zs is None else zs.name
             self.fig_title = f"{self.dataset.metadata['location']} [{name}]"
@@ -1024,19 +1022,19 @@ class PlotWidget(QtWidgets.QWidget):
         if path.endswith("mat"):
             try:
                 savemat(path, self.exp_data)
-            except:
+            except Exception:
                 pass
         elif path.endswith("h5"):
             try:
                 with h5py.File(path) as df:
                     set_h5_attrs(df, self.exp_data)
-            except:
+            except Exception:
                 pass
         elif path.endswith("pickle"):
             try:
                 with open(path, "wb") as f:
                     pickle.dump(self.exp_data, f)
-            except:
+            except Exception:
                 pass
 
     @staticmethod
@@ -1126,7 +1124,7 @@ class DataSetPlotter(PlotWidget):
                     self.arrays = scan_to_arrays(
                         self.dataset, xy_unit=self.xy_units.text()
                     )
-                except:
+                except Exception:
                     self.arrays = scan_to_arrays(self.dataset, xy_unit="um")
                     self.xy_units.setText("um")
             else:
@@ -1138,7 +1136,7 @@ class DataSetPlotter(PlotWidget):
                     self.arrays = td_to_arrays(
                         self.dataset, z_unit=self.xy_units.text()
                     )
-                except:
+                except Exception:
                     self.arrays = td_to_arrays(self.dataset, z_unit="um")
                     self.xy_units.setText("um")
             else:
@@ -1187,7 +1185,7 @@ class DataSetPlotter(PlotWidget):
             try:
                 unit = self.units.text()
                 ys.array.ito(unit)
-            except:
+            except Exception:
                 unit = ys.array.units
             self.units.setText(str(unit))
             self.units.setEnabled(True)
@@ -1202,7 +1200,7 @@ class DataSetPlotter(PlotWidget):
             try:
                 unit = self.units.text()
                 zs.array.ito(unit)
-            except:
+            except Exception:
                 unit = zs.array.units
             self.units.setText(str(unit))
             self.units.setEnabled(True)

@@ -3,7 +3,6 @@ from collections import OrderedDict
 from typing import Any, Dict, Optional, Sequence
 
 import numpy as np
-from pint import UnitRegistry
 
 
 def load_json_ordered(filename: str) -> OrderedDict:

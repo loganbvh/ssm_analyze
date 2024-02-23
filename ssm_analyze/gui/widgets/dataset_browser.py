@@ -1,12 +1,8 @@
 import os
 
-import qcodes as qc
 from qcodes_loop.data.data_set import load_data
 
-from ..qjsonmodel import QJsonModel
-from ..qt import *
-from ..utils import load_json_ordered
-from .plots import DataSetPlotter
+from ..qt import QtCore, QtGui, QtWidgets
 
 
 class DataSetBrowser(QtWidgets.QWidget):
