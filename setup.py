@@ -3,7 +3,8 @@
 """
 
 import os
-from setuptools import setup, find_packages
+
+from setuptools import find_packages, setup
 
 DESCRIPTION = "Analysis GUI for scanning SQUID microscopy"
 LONG_DESCRIPTION = __doc__
@@ -40,10 +41,6 @@ Operating System :: POSIX
 Operating System :: Unix
 Operating System :: Microsoft :: Windows
 Programming Language :: Python
-Programming Language :: Python :: 3.6
-Programming Language :: Python :: 3.7
-Programming Language :: Python :: 3.8
-Programming Language :: Python :: 3.9
 Topic :: Scientific/Engineering
 Topic :: Scientific/Engineering :: Physics
 """
@@ -55,7 +52,7 @@ KEYWORDS = "scanning SQUID microscopy"
 
 def package_files(directory):
     paths = []
-    for (path, directories, filenames) in os.walk(directory):
+    for path, directories, filenames in os.walk(directory):
         for filename in filenames:
             paths.append(os.path.join(os.pardir, path, filename))
     return paths
@@ -63,7 +60,7 @@ def package_files(directory):
 
 setup(
     name=NAME,
-    version="0.2.6",
+    version="0.3.0",
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     url=URL,

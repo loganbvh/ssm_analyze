@@ -1,6 +1,6 @@
 from IPython.lib import guisupport
-from qtconsole.rich_jupyter_widget import RichJupyterWidget
 from qtconsole.inprocess import QtInProcessKernelManager
+from qtconsole.rich_jupyter_widget import RichJupyterWidget
 
 
 class QJupyterWidget(RichJupyterWidget):
