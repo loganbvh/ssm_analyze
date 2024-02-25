@@ -1173,11 +1173,7 @@ class DataSetPlotter(PlotWidget):
         Args:
             name: Name of requested plot/array.
         """
-        scan_params = self.dataset.metadata["loop"]["metadata"]
-        x_dir = y_dir = "pos"
-        if "direction" in scan_params:
-            x_dir = scan_params["direction"]["x"]
-            y_dir = scan_params["direction"]["y"]
+        meas_params = self.dataset.metadata["loop"]["metadata"]
         if len(self.indep_vars) == 1:
             xs = DataItem(self.indep_vars[0], self.arrays[self.indep_vars[0]])
             ys = DataItem(name, self.arrays[name])
@@ -1190,6 +1186,10 @@ class DataSetPlotter(PlotWidget):
             self.units.setText(str(unit))
             self.units.setEnabled(True)
         elif len(self.indep_vars) == 2:
+            x_dir = y_dir = "pos"
+            if "direction" in meas_params:
+                x_dir = meas_params["direction"]["x"]
+                y_dir = meas_params["direction"]["y"]
             xs, ys = (DataItem(name, self.arrays[name]) for name in self.indep_vars)
             z = self.arrays[name]
             if x_dir == "neg":
