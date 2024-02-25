@@ -9,7 +9,6 @@ from matplotlib import cm, colors, transforms
 from matplotlib.collections import LineCollection
 from matplotlib.figure import Figure
 from matplotlib.widgets import Slider
-from mpl_toolkits.axes_grid1 import make_axes_locatable
 from scipy.io import savemat
 from scipy.linalg import lstsq
 from scipy.ndimage.interpolation import rotate
@@ -18,7 +17,7 @@ from ..qt import FigureCanvasQTAgg, NavigationToolbar2QT, Qt, QtCore, QtWidgets
 from ..utils import scan_to_arrays, set_h5_attrs, td_to_arrays
 from .sliders import SliderWidget, VertSlider
 
-mpl_cmaps = plt.colormaps()
+mpl_cmaps = sorted(plt.colormaps())
 qt_cmaps = (
     "thermal",
     "flame",
@@ -29,6 +28,7 @@ qt_cmaps = (
     "cyclic",
     "greyclip",
 )
+qt_cmaps = sorted(qt_cmaps)
 plot_lw = 3
 font_size = 12
 plt.rcParams["font.size"] = font_size
@@ -82,7 +82,6 @@ class PlotWidget(QtWidgets.QWidget):
 
         # matplotlib stuff
         self.fig = Figure(constrained_layout=True)
-        self.gridspec = self.fig.add_gridspec(12, 12)
         self.fig.patch.set_alpha(1)
         self.canvas = FigureCanvasQTAgg(self.fig)
         self.canvas.setParent(self)
@@ -112,23 +111,24 @@ class PlotWidget(QtWidgets.QWidget):
         self.pyqt_splitter.addWidget(pyqt_bottom_widgets)
 
         # plot options
-        self.option_layout = QtWidgets.QHBoxLayout()
+        self.top_option_layout = QtWidgets.QHBoxLayout()
+        self.bottom_option_layout = QtWidgets.QHBoxLayout()
         self._setup_cmap()
-        self._setup_background_subtraction()
-        self._setup_transforms()
-        self._setup_slices()
         self._setup_options()
+        self._setup_background_subtraction()
+        self._setup_slices()
+        self._setup_transforms()
         self.slice_state = 1  # no slices
         self.set_slice()
 
         # main layout
         layout = QtWidgets.QVBoxLayout(self)
-        layout.addLayout(self.option_layout)
+        layout.addLayout(self.top_option_layout)
         layout.addWidget(self.backsub_widget)
         layout.addWidget(self.toolbar)
         layout.addWidget(self.canvas)
         layout.addWidget(self.pyqt_splitter)
-        layout.addWidget(self.rotate_widget)
+        layout.addLayout(self.bottom_option_layout)
 
     def _setup_cmap(self) -> None:
         """Setup the UI for selecting matplotlib and pyqtgraph colormaps."""
@@ -138,23 +138,17 @@ class PlotWidget(QtWidgets.QWidget):
         self.qt_cmap_selector = QtWidgets.QComboBox()
         self.qt_cmap_selector.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToContents)
 
-        cmap_widget = QtWidgets.QGroupBox("Colormaps")
-        mpl_cmap_widget = QtWidgets.QGroupBox("matplotlib")
-        mpl_cmap_layout = QtWidgets.QHBoxLayout(mpl_cmap_widget)
+        cmap_widget = QtWidgets.QGroupBox("Colormap")
+        self.mpl_cmap_widget = QtWidgets.QGroupBox("matplotlib")
+        mpl_cmap_layout = QtWidgets.QHBoxLayout(self.mpl_cmap_widget)
         mpl_cmap_layout.addWidget(self.mpl_cmap_selector)
-        qt_cmap_widget = QtWidgets.QGroupBox("pyqtgraph")
-        qt_cmap_layout = QtWidgets.QHBoxLayout(qt_cmap_widget)
+        self.qt_cmap_widget = QtWidgets.QGroupBox("pyqtgraph")
+        qt_cmap_layout = QtWidgets.QHBoxLayout(self.qt_cmap_widget)
         qt_cmap_layout.addWidget(self.qt_cmap_selector)
         cmap_layout = QtWidgets.QHBoxLayout(cmap_widget)
-        mpl_cmap_widget.setSizePolicy(
-            QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Minimum
-        )
-        qt_cmap_widget.setSizePolicy(
-            QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Minimum
-        )
-        cmap_layout.addWidget(mpl_cmap_widget)
-        cmap_layout.addWidget(qt_cmap_widget)
-        self.option_layout.addWidget(cmap_widget)
+        cmap_layout.addWidget(self.mpl_cmap_widget)
+        cmap_layout.addWidget(self.qt_cmap_widget)
+        self.top_option_layout.addWidget(cmap_widget)
 
         self.mpl_cmap_selector.currentIndexChanged.connect(self.set_cmap_mpl)
         for name in mpl_cmaps:
@@ -164,6 +158,7 @@ class PlotWidget(QtWidgets.QWidget):
         for name in qt_cmaps:
             self.qt_cmap_selector.addItem(name)
         self.qt_cmap_selector.setCurrentIndex(0)
+        self.qt_cmap_widget.hide()
 
     def _setup_background_subtraction(self) -> None:
         """Setup UI for global or line-by-line background subtraction."""
@@ -174,9 +169,6 @@ class PlotWidget(QtWidgets.QWidget):
         ]
         backsub_buttons[0].setChecked(True)
         self.backsub_widget = QtWidgets.QGroupBox("Background subtraction")
-        self.backsub_widget.setSizePolicy(
-            QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum
-        )
         backsub_layout = QtWidgets.QHBoxLayout(self.backsub_widget)
         for i, b in enumerate(backsub_buttons):
             backsub_layout.addWidget(b)
@@ -200,16 +192,14 @@ class PlotWidget(QtWidgets.QWidget):
         self.line_backsub_radio.buttonClicked.connect(self.replot)
 
     def _setup_transforms(self) -> None:
-        """Setup UI for axis transformations. Currently this is only rotation.
-
-        TODO: Add flipud/fliplr?
-        """
+        """Setup UI for axis transformations. Currently this is only rotation."""
         self.rotate_widget = QtWidgets.QGroupBox("Rotate")
         rotate_layout = QtWidgets.QVBoxLayout()
         self.rotate_widget.setLayout(rotate_layout)
-        self.rotate_slider = SliderWidget(-180, 180, 0, 60)
+        self.rotate_slider = SliderWidget(-180, 180, 0, 180)
         rotate_layout.addWidget(self.rotate_slider)
         self.rotate_slider.value_box.valueChanged.connect(self.replot)
+        self.top_option_layout.addWidget(self.rotate_widget)
 
     def _setup_slices(self) -> None:
         """Setup UI for slices of image/2D data."""
@@ -225,11 +215,8 @@ class PlotWidget(QtWidgets.QWidget):
         self.line_color_btn.setChecked(True)
         self.line_color_btn.stateChanged.connect(self.replot)
         slice_layout.addWidget(self.line_color_btn)
-        self.option_layout.addWidget(slice_widget)
+        self.top_option_layout.addWidget(slice_widget)
         self.slice_radio.buttonClicked.connect(self.set_slice)
-        slice_widget.setSizePolicy(
-            QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum
-        )
 
     def _setup_options(self) -> None:
         """Setup UI for other plot options."""
@@ -257,9 +244,6 @@ class PlotWidget(QtWidgets.QWidget):
         self.bins_box.setEnabled(self.get_opt("histogram"))
 
         bins_widget = QtWidgets.QWidget()
-        bins_widget.setSizePolicy(
-            QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum
-        )
         bins_layout = QtWidgets.QHBoxLayout(bins_widget)
         if self.get_opt("histogram"):
             bins_widget.show()
@@ -269,7 +253,7 @@ class PlotWidget(QtWidgets.QWidget):
         bins_layout.addWidget(self.bins_box)
         opt_layout.addWidget(bins_widget)
 
-        self.option_layout.addWidget(opt_group)
+        self.top_option_layout.addWidget(opt_group)
         self.opt_checks["histogram"].stateChanged.connect(
             lambda val: self.bins_box.setEnabled(val)
         )
@@ -320,6 +304,12 @@ class PlotWidget(QtWidgets.QWidget):
         self.pyqt_splitter.hide()
         self.pyqt_plot.hide()
         self.pyqt_imview.hide()
+        if self.get_opt("pyqtgraph"):
+            self.mpl_cmap_widget.hide()
+            self.qt_cmap_widget.show()
+        else:
+            self.qt_cmap_widget.hide()
+            self.mpl_cmap_widget.show()
         if zs is None:  # 1d data
             self.line_backsub_btn.setChecked(False)
             self.line_backsub_btn.setEnabled(False)
@@ -486,231 +476,139 @@ class PlotWidget(QtWidgets.QWidget):
         """Plot 2D data on self.fig. kwargs are passed to plt.pcolormesh"""
         self.bins_box.setEnabled(self.get_opt("histogram"))
         if slice_state is None:
-            ax = self.fig.add_subplot(111)
-            ax.set_xlabel(xlabel)
-            ax.set_ylabel(ylabel)
-            x0, y0 = np.nanmean(xs.array.magnitude), np.nanmean(ys.array.magnitude)
-            tr = transforms.Affine2D().rotate_deg_around(x0, y0, angle)
-            im = ax.pcolormesh(
-                xs.array.magnitude,
-                ys.array.magnitude,
-                zs.array.magnitude,
-                cmap=cmap,
-                transform=(tr + ax.transData),
-                **kwargs,
-            )
-            main_divider = make_axes_locatable(ax)
-            cax = main_divider.append_axes("right", size="10%", pad=0.2)
-            cbar = self.fig.colorbar(im, cax=cax)
-            cbar.set_label(zlabel)
-            ax.set_aspect("equal")
             if self.get_opt("histogram"):
-                nbins = self.bins_box.value()
-                min_val = np.nanmin(zs.array.magnitude)
-                max_val = np.nanmax(zs.array.magnitude)
-                # add axis for histogram
-                ax_hist = main_divider.append_axes("right", size="25%", pad=1.1)
-                # lines indicating cmin and cmax on histogram
-                upper = ax_hist.axhline(max_val, color="k", lw=2)
-                lower = ax_hist.axhline(min_val, color="k", lw=2)
-                ax_hist.set_ylim(cax.get_ylim())
-                ax_hist.set_xticklabels([])
-                ax_hist.grid(self.get_opt("grid"))
-                # ax_hist.invert_xaxis()
-                N, bins, patches = ax_hist.hist(
-                    zs.array.magnitude.ravel(), bins=nbins, orientation="horizontal"
+                gs = self.fig.add_gridspec(
+                    1,
+                    4,
+                    width_ratios=[1, 0.25, 0.05, 0.05],
                 )
-                # set color of histogram bins according to z value
-                fracs = np.linspace(min_val, max_val, nbins)
-                norm = colors.Normalize(min_val, max_val)
-                for frac, patch in zip(fracs, patches):
-                    color = getattr(cm, cmap)(norm(frac))
-                    patch.set_facecolor(color)
-                # make sliders to control cmin and cmax
-                ax_min_slider = main_divider.append_axes("right", size="10%", pad=0.3)
-                self.min_slider = min_slider = VertSlider(
-                    ax_min_slider,
-                    "min",
-                    min_val,
-                    max_val,
-                    fontsize=font_size,
-                    valinit=min_val,
-                    labels=True,
-                    alpha=1,
-                    facecolor=getattr(cm, cmap)(norm(min_val)),
-                )
-                ax_max_slider = main_divider.append_axes("right", size="10%", pad=0.3)
-                self.max_slider = max_slider = VertSlider(
-                    ax_max_slider,
-                    "max",
-                    min_val,
-                    max_val,
-                    slidermin=min_slider,
-                    fontsize=font_size,
-                    valinit=max_val,
-                    labels=True,
-                    alpha=1,
-                    facecolor=getattr(cm, cmap)(norm(max_val)),
-                    start_at_bottom=False,
-                )
-
-                def update_cval(val):
-                    """function called when min_slider or max_slider are changed"""
-                    cmin = min_slider.val
-                    cmax = max_slider.val
-                    # cbar.set_clim([cmin, cmax])
-                    im.set_clim([cmin, cmax])
-                    upper.set_ydata(cmax)
-                    lower.set_ydata(cmin)
-                    min_slider.valmax = cmax
-                    # update colors on the histogram to reflect current clims
-                    norm = colors.Normalize(cmin, cmax)
-                    for frac, patch in zip(fracs, patches):
-                        if cmin <= frac <= cmax:
-                            color = getattr(cm, cmap)(norm(frac))
-                            patch.set_alpha(1)
-                        else:
-                            color = "k"
-                            patch.set_alpha(0.25)
-                        patch.set_facecolor(color)
-
-                for s in [min_slider, max_slider]:
-                    s.on_changed(update_cval)
-
-            z = zs.array.magnitude.T
-            if angle:
-                z = rotate(z, angle, cval=np.nan)
-            x = np.linspace(*ax.get_xlim(), z.shape[1])
-            y = np.linspace(*ax.get_ylim(), z.shape[0])
-            self.exp_data = {
-                xs.name: {"array": x, "unit": str(xs.array.units)},
-                ys.name: {"array": y, "unit": str(ys.array.units)},
-                zs.name: {"array": z.T, "unit": str(zs.array.units)},
-            }
-        else:  # slicing
-            # ax0 = plt.subplot2grid(
-            #     (12, 12),
-            #     (0, 3),
-            #     colspan=6,
-            #     rowspan=5,
-            #     fig=self.fig,
-            # )
-            row = 0
-            col = 3
-            rowspan = 5
-            colspan = 6
-            ax0 = self.fig.add_subplot(
-                self.gridspec[row : row + rowspan, col : col + colspan]
-            )
-            ax0.set_xlabel(xlabel)
-            ax0.set_ylabel(ylabel)
-            x0, y0 = np.nanmean(xs.array.magnitude), np.nanmean(ys.array.magnitude)
-            tr = transforms.Affine2D().rotate_deg_around(x0, y0, angle)
-            im = ax0.pcolormesh(
-                xs.array.magnitude,
-                ys.array.magnitude,
-                zs.array.magnitude,
-                cmap=cmap,
-                transform=(tr + ax0.transData),
-                **kwargs,
-            )
-            main_divider = make_axes_locatable(ax0)
-            cax = main_divider.append_axes("right", size="10%", pad=0.2)
-            cbar = self.fig.colorbar(im, cax=cax)
-            cbar.set_label(zlabel)
-            ax0.set_aspect("equal")
+                ax = self.fig.add_subplot(gs[0])
+                ax_hist = self.fig.add_subplot(gs[1])
+                ax_min_slider = self.fig.add_subplot(gs[2])
+                ax_max_slider = self.fig.add_subplot(gs[3])
+            else:
+                ax = self.fig.add_subplot(111)
+        else:
             if self.get_opt("histogram"):
-                nbins = self.bins_box.value()
-                min_val = np.nanmin(zs.array.magnitude)
-                max_val = np.nanmax(zs.array.magnitude)
-                # add axis for histogram
-                ax_hist = main_divider.append_axes("right", size="50%", pad=1.1)
-                # lines indicating cmin and cmax on histogram
-                upper = ax_hist.axhline(max_val, color="k", lw=2)
-                lower = ax_hist.axhline(min_val, color="k", lw=2)
-                ax_hist.set_ylim(cax.get_xlim())
-                ax_hist.set_xticklabels([])
-                ax_hist.grid(self.get_opt("grid"))
-                # ax_hist.invert_xaxis()
-                N, bins, patches = ax_hist.hist(
-                    zs.array.magnitude.ravel(), bins=nbins, orientation="horizontal"
+                gs = self.fig.add_gridspec(
+                    3,
+                    4,
+                    height_ratios=[3, 1, 0.025],
+                    width_ratios=[1, 0.25, 0.05, 0.05],
                 )
-                # set color of histogram bins according to z value
-                fracs = np.linspace(min_val, max_val, nbins)
-                norm = colors.Normalize(min_val, max_val)
-                for frac, patch in zip(fracs, patches):
-                    color = getattr(cm, cmap)(norm(frac))
-                    patch.set_facecolor(color)
-                # make sliders to control cmin and cmax
-                ax_min_slider = main_divider.append_axes("right", size="20%", pad=0.25)
-                self.min_slider = min_slider = VertSlider(
-                    ax_min_slider,
-                    "min",
-                    min_val,
-                    max_val,
-                    fontsize=10,
-                    valinit=min_val,
-                    labels=True,
-                    alpha=1,
-                    facecolor=getattr(cm, cmap)(norm(min_val)),
-                )
-                ax_max_slider = main_divider.append_axes("right", size="20%", pad=0.25)
-                self.max_slider = max_slider = VertSlider(
-                    ax_max_slider,
-                    "max",
-                    min_val,
-                    max_val,
-                    slidermin=min_slider,
-                    fontsize=10,
-                    valinit=max_val,
-                    labels=True,
-                    alpha=1,
-                    facecolor=getattr(cm, cmap)(norm(max_val)),
-                    start_at_bottom=False,
-                )
-
-                # function called when min_slider or max_slider is moved
-                def update_cval(val):
-                    cmin = min_slider.val
-                    cmax = max_slider.val
-                    # cbar.set_clim([cmin, cmax])
-                    im.set_clim([cmin, cmax])
-                    upper.set_ydata(cmax)
-                    lower.set_ydata(cmin)
-                    min_slider.valmax = cmax
-                    norm = colors.Normalize(cmin, cmax)
-                    for frac, patch in zip(fracs, patches):
-                        if cmin <= frac <= cmax:
-                            color = getattr(cm, cmap)(norm(frac))
-                            patch.set_alpha(1)
-                        else:
-                            color = "k"
-                            patch.set_alpha(0.25)
-                        patch.set_facecolor(color)
-
-                for s in (min_slider, max_slider):
-                    s.on_changed(update_cval)
-            # now add a subplot for the slice data
-            # ax1 = plt.subplot2grid(
-            #     (12, 12),
-            #     (7, 2),
-            #     colspan=8,
-            #     rowspan=5,
-            #     fig=self.fig,
-            # )
-            row = 7
-            col = 2
-            rowspan = 5
-            colspan = 8
-            ax1 = self.fig.add_subplot(
-                self.gridspec[row : row + rowspan, col : col + colspan]
+                ax = self.fig.add_subplot(gs[0, 0])
+                ax_hist = self.fig.add_subplot(gs[0, 1])
+                ax_min_slider = self.fig.add_subplot(gs[0, 2])
+                ax_max_slider = self.fig.add_subplot(gs[0, 3])
+                ax_cut = self.fig.add_subplot(gs[1, 0])
+                ax_slider = self.fig.add_subplot(gs[2, 0])
+            else:
+                gs = self.fig.add_gridspec(3, 1, height_ratios=[3, 1, 0.025])
+                ax = self.fig.add_subplot(gs[0])
+                ax_cut = self.fig.add_subplot(gs[1])
+                ax_slider = self.fig.add_subplot(gs[2])
+        ax.set_xlabel(xlabel)
+        ax.set_ylabel(ylabel)
+        x0, y0 = np.nanmean(xs.array.magnitude), np.nanmean(ys.array.magnitude)
+        tr = transforms.Affine2D().rotate_deg_around(x0, y0, angle)
+        im = ax.pcolormesh(
+            xs.array.magnitude,
+            ys.array.magnitude,
+            zs.array.magnitude,
+            cmap=cmap,
+            transform=(tr + ax.transData),
+            **kwargs,
+        )
+        cax = ax.inset_axes([1.05, 0, 0.05, 1])
+        cbar = self.fig.colorbar(im, cax=cax)
+        cbar.set_label(zlabel)
+        ax.set_aspect("equal", anchor="C")
+        if self.get_opt("histogram"):
+            nbins = self.bins_box.value()
+            min_val = np.nanmin(zs.array.magnitude)
+            max_val = np.nanmax(zs.array.magnitude)
+            # add axis for histogram
+            # lines indicating cmin and cmax on histogram
+            upper = ax_hist.axhline(max_val, color="k", lw=2)
+            lower = ax_hist.axhline(min_val, color="k", lw=2)
+            ax_hist.set_ylim(cbar.ax.get_ylim())
+            ax_hist.set_xticklabels([])
+            ax_hist.grid(self.get_opt("grid"))
+            N, bins, patches = ax_hist.hist(
+                zs.array.magnitude.ravel(), bins=nbins, orientation="horizontal"
             )
-            ax1.grid(self.get_opt("grid"))
+            # set color of histogram bins according to z value
+            fracs = np.linspace(min_val, max_val, nbins)
+            norm = colors.Normalize(min_val, max_val)
+            for frac, patch in zip(fracs, patches):
+                patch.set_facecolor(plt.get_cmap(cmap)(norm(frac)))
+            # make sliders to control cmin and cmax
+            self.min_slider = min_slider = VertSlider(
+                ax_min_slider,
+                "min",
+                min_val,
+                max_val,
+                fontsize=font_size,
+                valinit=min_val,
+                labels=True,
+                alpha=1,
+                facecolor=getattr(cm, cmap)(norm(min_val)),
+            )
+            self.max_slider = max_slider = VertSlider(
+                ax_max_slider,
+                "max",
+                min_val,
+                max_val,
+                slidermin=min_slider,
+                fontsize=font_size,
+                valinit=max_val,
+                labels=True,
+                alpha=1,
+                facecolor=getattr(cm, cmap)(norm(max_val)),
+                start_at_bottom=False,
+            )
+
+            def update_cval(val):
+                """function called when min_slider or max_slider are changed"""
+                cmin = min_slider.val
+                cmax = max_slider.val
+                # cbar.set_clim([cmin, cmax])
+                im.set_clim([cmin, cmax])
+                upper.set_ydata(cmax)
+                lower.set_ydata(cmin)
+                min_slider.valmax = cmax
+                # update colors on the histogram to reflect current clims
+                norm = colors.Normalize(cmin, cmax)
+                for frac, patch in zip(fracs, patches):
+                    if cmin <= frac <= cmax:
+                        color = getattr(cm, cmap)(norm(frac))
+                        patch.set_alpha(1)
+                    else:
+                        color = "k"
+                        patch.set_alpha(0.25)
+                    patch.set_facecolor(color)
+
+            for s in [min_slider, max_slider]:
+                s.on_changed(update_cval)
+
+        z = zs.array.magnitude.T
+        if angle:
+            z = rotate(z, angle, cval=np.nan)
+        x = np.linspace(*ax.get_xlim(), z.shape[1])
+        y = np.linspace(*ax.get_ylim(), z.shape[0])
+        self.exp_data = {
+            xs.name: {"array": x, "unit": str(xs.array.units)},
+            ys.name: {"array": y, "unit": str(ys.array.units)},
+            zs.name: {"array": z.T, "unit": str(zs.array.units)},
+        }
+
+        if slice_state is not None:
+            ax_cut.grid(self.get_opt("grid"))
             xlab = xlabel if slice_state == "x" else ylabel
             label = zlabel.split(" ")[:1] + ["".join(zlabel.split(" ")[1:])]
             ylab = "\n".join(label)
-            ax1.set_xlabel(xlab)
-            ax1.set_ylabel(ylab)
+            ax_cut.set_xlabel(xlab)
+            ax_cut.set_ylabel(ylab)
 
             color_by_value = self.line_color_btn.isChecked()
             if slice_state == "x":
@@ -740,16 +638,16 @@ class PlotWidget(QtWidgets.QWidget):
             lc.set_linewidth(plot_lw)
 
             if color_by_value:
-                ax1.add_collection(lc)
+                ax_cut.add_collection(lc)
                 # we need an invisible line so that the figure draws correctly
-                (line,) = ax1.plot([0, 0], alpha=0)
+                (line,) = ax_cut.plot([0, 0], alpha=0)
             else:
-                (line,) = ax1.plot(slice_xs, slice_ys, lw=plot_lw)
+                (line,) = ax_cut.plot(slice_xs, slice_ys, lw=plot_lw)
 
             if slice_state == "x":
-                cut = ax0.axhline(y=ax0.get_ylim()[0], color="k", alpha=0.8, lw=2)
+                cut = ax.axhline(y=np.nanmin(y), color="k", alpha=0.8, lw=2)
             else:
-                cut = ax0.axvline(x=ax0.get_xlim()[0], color="k", alpha=0.8, lw=2)
+                cut = ax.axvline(x=np.nanmin(x), color="k", alpha=0.8, lw=2)
 
             if self.line_color_btn.isChecked() and self.get_opt("histogram"):
                 # adjust line color based on min_slider and max_slider
@@ -758,9 +656,7 @@ class PlotWidget(QtWidgets.QWidget):
 
                 for s in [min_slider, max_slider]:
                     s.on_changed(update_line_color)
-            # add an axis for the slice slider
-            divider = make_axes_locatable(ax1)
-            ax_slider = divider.append_axes("bottom", size="15%", pad=0.45)
+
             idx_label = "y" if slice_state == "x" else "x"
             idx = 1 if slice_state == "x" else 0
             self.slider = slider = Slider(
@@ -775,8 +671,8 @@ class PlotWidget(QtWidgets.QWidget):
             z = zs.array.magnitude
             if angle:
                 z = rotate(z, angle, cval=np.nan)
-            x = np.linspace(*ax0.get_xlim(), z.shape[1])
-            y = np.linspace(*ax0.get_ylim(), z.shape[0])
+            x = np.linspace(*ax.get_xlim(), z.shape[1])
+            y = np.linspace(*ax.get_ylim(), z.shape[0])
 
             def update(val):
                 """Function called when slider is moved"""
@@ -784,8 +680,8 @@ class PlotWidget(QtWidgets.QWidget):
                 z = zs.array.magnitude
                 if angle:
                     z = rotate(z, angle, cval=np.nan)
-                x = np.linspace(*ax0.get_xlim(), z.shape[1])
-                y = np.linspace(*ax0.get_ylim(), z.shape[0])
+                x = np.linspace(*ax.get_xlim(), z.shape[1])
+                y = np.linspace(*ax.get_ylim(), z.shape[0])
                 margin = 0.025
                 color_by_value = self.line_color_btn.isChecked()
                 if slice_state == "x":
@@ -838,7 +734,7 @@ class PlotWidget(QtWidgets.QWidget):
                         zs.name: {"array": ydata, "unit": str(zs.array.units)},
                         "index": int(slider.val),
                     }
-                ax1.set_xlim(xmin, xmax)
+                ax_cut.set_xlim(xmin, xmax)
                 slider.ax.set_xlim(slider.valmin, slider.valmax)
                 vmin, vmax = np.nanmin(ydata), np.nanmax(ydata)
                 margin = 0.1
@@ -846,18 +742,12 @@ class PlotWidget(QtWidgets.QWidget):
                 vmin = vmin - margin * rng
                 vmax = vmax + margin * rng
                 try:
-                    ax1.set_ylim(vmin, vmax)
+                    ax_cut.set_ylim(vmin, vmax)
                 except ValueError:  # vmin == vmax
                     pass
-                self.canvas.draw()
 
             update(0)
             slider.on_changed(update)
-            self.exp_data = {
-                xs.name: {"array": x, "unit": str(xs.array.units)},
-                ys.name: {"array": y, "unit": str(ys.array.units)},
-                zs.name: {"array": z.T, "unit": str(zs.array.units)},
-            }
 
     def replot(self):
         """Update the current plot from self.current_data."""
@@ -1086,12 +976,9 @@ class DataSetPlotter(PlotWidget):
         self.indep_vars = None
         arrays_widget = QtWidgets.QGroupBox("Arrays")
         arrays_layout = QtWidgets.QGridLayout(arrays_widget)
-        arrays_widget.setSizePolicy(
-            QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Minimum
-        )
         self.selector = QtWidgets.QComboBox()
         arrays_layout.addWidget(self.selector, 0, 0)
-        self.option_layout.insertWidget(0, arrays_widget)
+        self.top_option_layout.insertWidget(0, arrays_widget)
         self.selector.currentIndexChanged.connect(self.set_plot)
         self.units = QtWidgets.QLineEdit("Array unit")
         self.units.setEnabled(False)
