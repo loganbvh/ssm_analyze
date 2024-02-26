@@ -27,7 +27,7 @@ INSTALL_REQUIRES = [
     "pint",
     "PyQt5",
     "pyqtgraph",
-    "qcodes",
+    "qcodes_loop",
     "qtpy",
     "scipy",
 ]
@@ -60,7 +60,7 @@ def package_files(directory):
 
 setup(
     name=NAME,
-    version="0.3.0",
+    version="0.4.0",
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     url=URL,
