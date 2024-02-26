@@ -1,11 +1,13 @@
 import os
 import sys
-import numpy as np
-from .qt import QtGui, QtWidgets, QtCore, Qt
-import matplotlib.pyplot as plt
-from .widgets import QJupyterWidget, MetaWidget, DataSetBrowser, DataSetPlotter
-from .utils import load_json_ordered
 import warnings
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+from .qt import Qt, QtGui, QtWidgets
+from .utils import load_json_ordered
+from .widgets import DataSetBrowser, DataSetPlotter, MetaWidget, QJupyterWidget
 
 warnings.filterwarnings("ignore", message="The unit of the quantity is stripped")
 warnings.filterwarnings("ignore", message="tight_layout")

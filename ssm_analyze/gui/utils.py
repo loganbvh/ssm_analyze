@@ -1,8 +1,8 @@
-from typing import Dict, Sequence, Any, Optional
-import numpy as np
-from pint import UnitRegistry
-from collections import OrderedDict
 import json
+from collections import OrderedDict
+from typing import Any, Dict, Optional, Sequence
+
+import numpy as np
 
 
 def load_json_ordered(filename: str) -> OrderedDict:

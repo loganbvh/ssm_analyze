@@ -1,6 +1,6 @@
 from ..qjsonmodel import QJsonModel
+from ..qt import Qt, QtWidgets
 from ..utils import load_json_ordered
-from ..qt import *
 
 
 class MetaWidget(QtWidgets.QTreeView):

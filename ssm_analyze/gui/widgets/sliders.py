@@ -1,5 +1,6 @@
-from ..qt import Qt, QtCore, QtWidgets, QtGui
 from matplotlib.widgets import AxesWidget
+
+from ..qt import Qt, QtCore, QtGui, QtWidgets
 
 
 class LabeledSlider(QtWidgets.QWidget):

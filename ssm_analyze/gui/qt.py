@@ -1,4 +1,4 @@
-from qtpy import QtGui, QtCore, QtWidgets, API
+from qtpy import API, QtCore, QtGui, QtWidgets
 from qtpy.QtCore import Qt
 
 if API == "pyqt5":
