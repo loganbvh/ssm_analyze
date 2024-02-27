@@ -173,8 +173,10 @@ class PlotWidget(QtWidgets.QWidget):
         """Setup the UI for selecting matplotlib and pyqtgraph colormaps."""
         self.mpl_cmap = "viridis"
         self.mpl_cmap_selector = QtWidgets.QComboBox()
+        self.mpl_cmap_selector.setEditable(True)
         self.mpl_cmap_selector.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToContents)
         self.qt_cmap_selector = QtWidgets.QComboBox()
+        self.qt_cmap_selector.setEditable(True)
         self.qt_cmap_selector.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToContents)
 
         cmap_widget = QtWidgets.QGroupBox("Colormap")
