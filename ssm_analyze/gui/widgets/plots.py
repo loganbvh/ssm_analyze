@@ -70,6 +70,45 @@ def format_units(units, skip=True):
     return units
 
 
+def subtract_line_by_line(zdata: np.ndarray, axis: int, func: Callable):
+    """Perform line-by-line background subtraction of ``zdata``
+    along axis ``axis`` according to callable ``func``.
+
+    Args:
+        zdata: 2D data for which you want to do background subtraction.
+        axis: Axis along which you want to do line-by-line background subtraction.
+        func: Function applied to each line to calculate the value to subtract
+            (e.g. np.min, np.mean, etc.)
+
+    Returns:
+        A copy of zdata with background subtracted line-by-line.
+    """
+    zdata = zdata.copy()
+    if axis == 0:  # x
+        for i in range(zdata.shape[axis]):
+            zdata[i, :] -= func(zdata[i, :])
+    else:  # y
+        for i in range(zdata.shape[axis]):
+            zdata[:, i] -= func(zdata[:, i])
+    return zdata
+
+
+def fit_line(x: np.ndarray, y: np.ndarray) -> np.ndarray:
+    """Returns the best-fit line ``slope * x + offset`` to ``y``"""
+    slope, offset = np.polyfit(x, y, 1)
+    return slope * x + offset
+
+
+def fit_plane(x: np.ndarray, y: np.ndarray, z: np.ndarray) -> np.ndarray:
+    """Returns the best-fit plane ``z = f(x, y)``"""
+    X, Y = np.meshgrid(x, y)
+    mask = np.isfinite(z)
+    r = np.column_stack((X[mask], Y[mask], np.ones(mask.sum(), dtype=float)))
+    coeffs, *_ = lstsq(r, z[mask])
+    plane = coeffs[0] * X + coeffs[1] * Y + coeffs[2]
+    return plane
+
+
 class PlotWidget(QtWidgets.QWidget):
     """Plotting widget comprised of a matplotlib canvas and a pyqtgraph widget, along with some
     options like slices of image data, axis transforms, etc.
@@ -835,10 +874,10 @@ class PlotWidget(QtWidgets.QWidget):
                 np.nanmax,
                 np.nanmean,
                 np.nanmedian,
-                lambda y, x=xs.array.magnitude: self._fit_line(x, y),
+                lambda y, x=xs.array.magnitude: fit_line(x, y),
             )
             axis = self.line_backsub_radio.checkedId()
-            z = self._subtract_line_by_line(zs.array.magnitude, axis, funcs[idx])
+            z = subtract_line_by_line(zs.array.magnitude, axis, funcs[idx])
             zs = DataItem(
                 zs.name, z * zs.array.units
             )  # restore units after background subtraction
@@ -851,12 +890,12 @@ class PlotWidget(QtWidgets.QWidget):
                 lambda z: np.nanmedian(z.ravel()),
             )
             if zs is None:
-                funcs = funcs + (lambda y, x=xs.array.magnitude: self._fit_line(x, y),)
+                funcs = funcs + (lambda y, x=xs.array.magnitude: fit_line(x, y),)
                 y = ys.array.magnitude
                 ys = DataItem(ys.name, ys.array.units * (y - funcs[idx](y)))
             else:
                 funcs = funcs + (
-                    lambda z, x=xs.array.magnitude, y=ys.array.magnitude: self._fit_plane(
+                    lambda z, x=xs.array.magnitude, y=ys.array.magnitude: fit_plane(
                         x, y, z
                     ),
                 )
@@ -926,44 +965,6 @@ class PlotWidget(QtWidgets.QWidget):
                     pickle.dump(self.exp_data, f)
             except Exception:
                 pass
-
-    @staticmethod
-    def _subtract_line_by_line(zdata: np.ndarray, axis: int, func: Callable):
-        """Perform line-by-line background subtraction of `zdata` along axis `axis` according
-        to callable `func`.
-
-        Args:
-            zdata (np.ndarray): 2D data for which you want to do background subtraction.
-            axis (int): Axis along which you want to do line-by-line background subtraction.
-            func (callable): Function applied to each line to calculate the value to subtract
-                (e.g. np.min, np.mean, etc.)
-
-        Returns:
-            np.ndarray: zdata with background subtracted line-by-line.
-        """
-        zdata = zdata.copy()
-        if axis == 0:  # x
-            for i in range(zdata.shape[axis]):
-                zdata[i, :] -= func(zdata[i, :])
-        else:  # y
-            for i in range(zdata.shape[axis]):
-                zdata[:, i] -= func(zdata[:, i])
-        return zdata
-
-    @staticmethod
-    def _fit_line(x, y):
-        """Fit the best-fit line `slope * x + offset` to `y`."""
-        slope, offset = np.polyfit(x, y, 1)
-        return slope * x + offset
-
-    @staticmethod
-    def _fit_plane(x: np.ndarray, y: np.ndarray, z: np.ndarray) -> np.ndarray:
-        X, Y = np.meshgrid(x, y)
-        mask = np.isfinite(z)
-        r = np.column_stack((X[mask], Y[mask], np.ones(mask.sum(), dtype=float)))
-        coeffs, *_ = lstsq(r, z[mask])
-        plane = coeffs[0] * X + coeffs[1] * Y + coeffs[2]
-        return plane
 
 
 class DataSetPlotter(PlotWidget):
