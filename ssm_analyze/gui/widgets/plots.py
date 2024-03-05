@@ -8,14 +8,14 @@ import pyqtgraph as pg
 from matplotlib import cm, colors, transforms
 from matplotlib.collections import LineCollection
 from matplotlib.figure import Figure
-from matplotlib.widgets import Slider
+from matplotlib.widgets import RangeSlider, Slider
 from scipy.io import savemat
 from scipy.linalg import lstsq
 from scipy.ndimage.interpolation import rotate
 
 from ..qt import FigureCanvasQTAgg, NavigationToolbar2QT, Qt, QtCore, QtWidgets
 from ..utils import scan_to_arrays, set_h5_attrs, td_to_arrays
-from .sliders import SliderWidget, VertSlider
+from .sliders import SliderWidget
 
 mpl_cmaps = sorted(plt.colormaps())
 qt_cmaps = (
@@ -520,31 +520,29 @@ class PlotWidget(QtWidgets.QWidget):
             if self.get_opt("histogram"):
                 gs = self.fig.add_gridspec(
                     1,
-                    4,
-                    width_ratios=[1, 0.25, 0.05, 0.05],
+                    3,
+                    width_ratios=[1, 0.25, 0.05],
                 )
                 ax = self.fig.add_subplot(gs[0])
                 ax_hist = self.fig.add_subplot(gs[1])
-                ax_min_slider = self.fig.add_subplot(gs[2])
-                ax_max_slider = self.fig.add_subplot(gs[3])
+                ax_range_slider = self.fig.add_subplot(gs[2])
             else:
                 ax = self.fig.add_subplot(111)
         else:
             if self.get_opt("histogram"):
                 gs = self.fig.add_gridspec(
                     3,
-                    4,
-                    height_ratios=[3, 1, 0.025],
-                    width_ratios=[1, 0.25, 0.05, 0.05],
+                    3,
+                    height_ratios=[3, 1, 0.1],
+                    width_ratios=[1, 0.25, 0.05],
                 )
                 ax = self.fig.add_subplot(gs[0, 0])
                 ax_hist = self.fig.add_subplot(gs[0, 1])
-                ax_min_slider = self.fig.add_subplot(gs[0, 2])
-                ax_max_slider = self.fig.add_subplot(gs[0, 3])
+                ax_range_slider = self.fig.add_subplot(gs[0, 2])
                 ax_cut = self.fig.add_subplot(gs[1, 0])
                 ax_slider = self.fig.add_subplot(gs[2, 0])
             else:
-                gs = self.fig.add_gridspec(3, 1, height_ratios=[3, 1, 0.025])
+                gs = self.fig.add_gridspec(3, 1, height_ratios=[3, 1, 0.1])
                 ax = self.fig.add_subplot(gs[0])
                 ax_cut = self.fig.add_subplot(gs[1])
                 ax_slider = self.fig.add_subplot(gs[2])
@@ -583,41 +581,24 @@ class PlotWidget(QtWidgets.QWidget):
             norm = colors.Normalize(min_val, max_val)
             for frac, patch in zip(fracs, patches):
                 patch.set_facecolor(plt.get_cmap(cmap)(norm(frac)))
-            # make sliders to control cmin and cmax
-            self.min_slider = min_slider = VertSlider(
-                ax_min_slider,
-                "min",
+
+            self.range_slider = range_slider = RangeSlider(
+                ax_range_slider,
+                "Limits",
                 min_val,
                 max_val,
-                fontsize=font_size,
-                valinit=min_val,
-                labels=True,
+                valinit=(min_val, max_val),
                 alpha=1,
-                facecolor=getattr(cm, cmap)(norm(min_val)),
-            )
-            self.max_slider = max_slider = VertSlider(
-                ax_max_slider,
-                "max",
-                min_val,
-                max_val,
-                slidermin=min_slider,
-                fontsize=font_size,
-                valinit=max_val,
-                labels=True,
-                alpha=1,
-                facecolor=getattr(cm, cmap)(norm(max_val)),
-                start_at_bottom=False,
+                facecolor="gray",
+                orientation="vertical",
             )
 
             def update_cval(val):
-                """function called when min_slider or max_slider are changed"""
-                cmin = min_slider.val
-                cmax = max_slider.val
-                # cbar.set_clim([cmin, cmax])
+                """function called when range_slider is changed"""
+                cmin, cmax = val
                 im.set_clim([cmin, cmax])
                 upper.set_ydata(cmax)
                 lower.set_ydata(cmin)
-                min_slider.valmax = cmax
                 # update colors on the histogram to reflect current clims
                 norm = colors.Normalize(cmin, cmax)
                 for frac, patch in zip(fracs, patches):
@@ -629,8 +610,7 @@ class PlotWidget(QtWidgets.QWidget):
                         patch.set_alpha(0.25)
                     patch.set_facecolor(color)
 
-            for s in [min_slider, max_slider]:
-                s.on_changed(update_cval)
+            range_slider.on_changed(update_cval)
 
         z = zs.array.magnitude.T
         if angle:
@@ -693,10 +673,9 @@ class PlotWidget(QtWidgets.QWidget):
             if self.line_color_btn.isChecked() and self.get_opt("histogram"):
                 # adjust line color based on min_slider and max_slider
                 def update_line_color(val):
-                    lc.set_norm(colors.Normalize(min_slider.val, max_slider.val))
+                    lc.set_norm(colors.Normalize(*range_slider.val))
 
-                for s in [min_slider, max_slider]:
-                    s.on_changed(update_line_color)
+                range_slider.on_changed(update_line_color)
 
             idx_label = "y" if slice_state == "x" else "x"
             idx = 1 if slice_state == "x" else 0
